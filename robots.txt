@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ighesapkurtar.com/sitemap.xml
+Sitemap: https://www.ighesapkurtar.com/sitemap.xml
