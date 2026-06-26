@@ -46,7 +46,7 @@
       {
         "@type": "Question",
         "name": "Kapatılan Instagram hesabı tekrar açılabilir mi?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95'in üzerindedir." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95'in üzerindedir. Başarısız olursa %50 iade garantisi sunuyoruz." }
       },
       {
         "@type": "Question",
@@ -264,6 +264,16 @@
     .chat-send:hover{opacity:.9}
     .chat-send:disabled{opacity:.4;cursor:not-allowed}
 
+    .quick-actions{display:flex;flex-wrap:wrap;gap:6px;padding:0 4px}
+    .quick-btn{background:var(--bg-deep);border:1px solid var(--border);border-radius:8px;color:var(--text-muted);padding:8px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s;text-align:left}
+    .quick-btn:hover{border-color:var(--primary);color:var(--primary-bright);background:rgba(129,140,248,0.06)}
+    .chat-msg.bot{white-space:pre-line}
+    .typing-dots{display:inline-flex;gap:4px;padding:4px 0}
+    .typing-dots span{width:6px;height:6px;background:var(--text-dim);border-radius:50%;animation:dotPulse 1.2s infinite}
+    .typing-dots span:nth-child(2){animation-delay:.2s}
+    .typing-dots span:nth-child(3){animation-delay:.4s}
+    @keyframes dotPulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+
     /* RESPONSIVE */
     @media(max-width:768px){
       .nav-links{display:none}
@@ -396,7 +406,7 @@
           <div class="rec-badge" id="rec-badge">Önerilen Paket</div>
           <div class="rec-title" id="rec-title"></div>
           <div class="rec-price" id="rec-price"></div>
-          <div class="rec-note">Tek seferlik ödeme · Başarısız olursa iade</div>
+          <div class="rec-note">Tek seferlik ödeme · Başarısız olursa %50 iade</div>
           <ul class="rec-features" id="rec-features"></ul>
           <div class="rec-actions">
             <a href="#" id="rec-shopier" target="_blank" class="btn btn-primary">💳 Kartla Öde</a>
@@ -426,9 +436,9 @@
             <li><span class="check">✓</span> Ücretsiz durum analizi</li>
             <li><span class="check">✓</span> 48-72 saat içinde sonuç</li>
             <li><span class="check">✓</span> Anlık bilgilendirme</li>
-            <li><span class="check">✓</span> Başarısız olursa iade</li>
+            <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
-          <a href="SHOPIER_LINK_BASLANGIC" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
+          <a href="https://www.shopier.com/ighesapkurtar/48444713" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
           <a href="NOWPAYMENTS_LINK_BASLANGIC" target="_blank" class="btn btn-outline price-btn" style="margin-top:8px">₿ Kripto ile Öde</a>
         </div>
         <div class="price-card featured">
@@ -442,9 +452,9 @@
             <li><span class="check">✓</span> 48-72 saat içinde sonuç</li>
             <li><span class="check">✓</span> Birebir canlı destek</li>
             <li><span class="check">✓</span> Hesap güvenlik danışmanlığı</li>
-            <li><span class="check">✓</span> Başarısız olursa iade</li>
+            <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
-          <a href="SHOPIER_LINK_PROFESYONEL" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
+          <a href="https://www.shopier.com/ighesapkurtar/48444724" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
           <a href="NOWPAYMENTS_LINK_PROFESYONEL" target="_blank" class="btn btn-outline price-btn" style="margin-top:8px">₿ Kripto ile Öde</a>
         </div>
         <div class="price-card">
@@ -459,9 +469,9 @@
             <li><span class="check">✓</span> Kişisel hesap yöneticisi</li>
             <li><span class="check">✓</span> Reklam hesabı koruması</li>
             <li><span class="check">✓</span> 30 gün sonrası destek</li>
-            <li><span class="check">✓</span> Başarısız olursa iade</li>
+            <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
-          <a href="SHOPIER_LINK_VIP" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
+          <a href="https://www.shopier.com/ighesapkurtar/48444736" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
           <a href="NOWPAYMENTS_LINK_VIP" target="_blank" class="btn btn-outline price-btn" style="margin-top:8px">₿ Kripto ile Öde</a>
         </div>
       </div>
@@ -529,10 +539,10 @@
       <div class="faq-list">
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesabım kapatıldı nasıl geri alabilirim?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Instagram hesabınız kapatıldığında öncelikle kapatılma sebebini anlamak gerekir. Topluluk kuralları ihlali, spam aktivitesi veya şikayet kaynaklı olabilir. Profesyonel hesap kurtarma hizmetimiz ile hesabınızın durumunu ücretsiz analiz ediyoruz ve size en uygun kurtarma planını sunuyoruz. Genellikle 48-72 saat içinde hesabınızı geri almanız mümkündür.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesap kurtarma ne kadar sürer?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Hesap kurtarma süresi hesabın durumuna ve kapatılma sebebine göre değişir. Basit askıya alma vakaları 48-72 saat, karmaşık hack vakaları ise 3-7 gün içinde çözümlenir. VIP paketimizde acil müdahale ekibi ile süreç hızlandırılır.</div></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Kapatılan Instagram hesabı tekrar açılabilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95'in üzerindedir. Ancak her vakanın kendine özgü koşulları vardır. Ücretsiz analiz aşamasında hesabınızın kurtarılma olasılığını size net olarak bildiriyoruz. Kurtarma başarısız olursa ücretinizi iade ediyoruz.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Kapatılan Instagram hesabı tekrar açılabilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95'in üzerindedir. Ancak her vakanın kendine özgü koşulları vardır. Ücretsiz analiz aşamasında hesabınızın kurtarılma olasılığını size net olarak bildiriyoruz. Kurtarma başarısız olursa ücretinizin %50'sini iade ediyoruz.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesap kurtarma güvenli mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Hesap kurtarma sürecimiz tamamen güvenlidir. Instagram'ın resmi kanalları üzerinden iletişim kurarak, yasal ve etik çerçevede çalışıyoruz. Hesap şifrenizi veya kişisel bilgilerinizi talep etmiyoruz. Süreç boyunca hesabınız herhangi bir ek risk altına girmez.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Ödeme yöntemleriniz nelerdir?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Kredi kartı ve banka kartı ile güvenli ödeme (Shopier altyapısı) ve kripto para ile ödeme (Bitcoin, Ethereum, USDT) seçenekleri sunuyoruz. Tüm ödeme işlemleriniz güvenli altyapılar üzerinden gerçekleştirilir.</div></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Başarısız olursa param iade edilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, %100 iade garantisi sunuyoruz. Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin tamamını iade ediyoruz. Bu garanti, tüm paketlerimiz için geçerlidir. Risk tamamen bizde.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Başarısız olursa param iade edilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, %50 iade garantisi sunuyoruz. Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin %50'sini iade ediyoruz. Bu garanti, tüm paketlerimiz için geçerlidir.</div></div></div>
       </div>
     </div>
   </section>
@@ -596,17 +606,23 @@
     <div class="chat-header">
       <div class="chat-avatar">🤖</div>
       <div class="chat-header-info">
-        <h4>IG Hesap Kurtar Asistan</h4>
-        <span>Çevrimiçi</span>
+        <h4>Hesap Kurtarma Asistanı</h4>
+        <span>AI Destekli · Çevrimiçi</span>
       </div>
       <button class="chat-close" onclick="toggleChat()">✕</button>
     </div>
     <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot">Merhaba! 👋 Ben IG Hesap Kurtar yapay zeka asistanıyım. Instagram hesabınızla ilgili sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?</div>
+      <div class="chat-msg bot">Merhaba! 👋 Instagram hesabınızla ilgili size yardımcı olabilirim. Sorununuzu anlatabilir veya aşağıdaki konulardan birini seçebilirsiniz.</div>
+      <div class="quick-actions" id="quickActions">
+        <button class="quick-btn" onclick="quickAsk('Hesabım kapatıldı, ne yapmalıyım?')">🚫 Hesabım kapatıldı</button>
+        <button class="quick-btn" onclick="quickAsk('Hesabım hacklendi, acil yardım lazım')">🔓 Hesabım hacklendi</button>
+        <button class="quick-btn" onclick="quickAsk('Fiyatlarınız nedir?')">💰 Fiyatlar</button>
+        <button class="quick-btn" onclick="quickAsk('Kurtarma süreci nasıl işliyor?')">⚙️ Nasıl çalışır?</button>
+      </div>
     </div>
     <div class="chat-input-area">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Mesajınızı yazın..." onkeydown="if(event.key==='Enter')sendChat()">
-      <button class="chat-send" id="chatSend" onclick="sendChat()">Gönder</button>
+      <input type="text" class="chat-input" id="chatInput" placeholder="Sorununuzu anlatın..." onkeydown="if(event.key==='Enter'&&!event.shiftKey)sendChat()">
+      <button class="chat-send" id="chatSend" onclick="sendChat()">➤</button>
     </div>
   </div>
 
@@ -628,9 +644,9 @@
       // ── Ödeme Linkleri ──
       // Shopier ve NOWPayments linklerini buraya yapıştır:
       const PAYMENT_LINKS = {
-        baslangic: { shopier: 'SHOPIER_LINK_BASLANGIC', crypto: 'NOWPAYMENTS_LINK_BASLANGIC' },
-        profesyonel: { shopier: 'SHOPIER_LINK_PROFESYONEL', crypto: 'NOWPAYMENTS_LINK_PROFESYONEL' },
-        vip: { shopier: 'SHOPIER_LINK_VIP', crypto: 'NOWPAYMENTS_LINK_VIP' }
+        baslangic: { shopier: 'https://www.shopier.com/ighesapkurtar/48444713', crypto: 'NOWPAYMENTS_LINK_BASLANGIC' },
+        profesyonel: { shopier: 'https://www.shopier.com/ighesapkurtar/48444724', crypto: 'NOWPAYMENTS_LINK_PROFESYONEL' },
+        vip: { shopier: 'https://www.shopier.com/ighesapkurtar/48444736', crypto: 'NOWPAYMENTS_LINK_VIP' }
       };
 
       if (type === 'business' || followers >= 50000) {
@@ -644,7 +660,7 @@
           'Kişisel hesap yöneticisi',
           'Reklam hesabı koruması',
           '30 gün sonrası destek',
-          'Başarısız olursa %100 iade'
+          'Başarısız olursa %50 iade'
         ];
       } else if (followers >= 10000) {
         pkg = '⭐ Profesyonel — Orta-Büyük Hesap';
@@ -656,7 +672,7 @@
           '48-72 saat içinde sonuç',
           'Birebir canlı destek',
           'Hesap güvenlik danışmanlığı',
-          'Başarısız olursa %100 iade'
+          'Başarısız olursa %50 iade'
         ];
       } else {
         pkg = '📋 Başlangıç — Kişisel Hesap';
@@ -667,7 +683,7 @@
           'Ücretsiz durum analizi',
           '48-72 saat içinde sonuç',
           'Anlık bilgilendirme',
-          'Başarısız olursa %100 iade'
+          'Başarısız olursa %50 iade'
         ];
       }
 
@@ -683,45 +699,106 @@
       rec.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // ═══════════ CHATBOT ═══════════
+    // ═══════════ AI CHATBOT ═══════════
     function toggleChat() {
       const w = document.getElementById('chatWindow');
       w.classList.toggle('open');
+      if (w.classList.contains('open')) document.getElementById('chatInput').focus();
     }
 
-    const SYSTEM_PROMPT = `Sen IG Hesap Kurtar'ın (ighesapkurtar.com) yapay zeka asistanısın. Instagram hesap kurtarma hizmeti sunan bir şirketin canlı destek botusun. Görevin:
-- Müşterilere Instagram hesap kurtarma süreci hakkında bilgi vermek
-- Fiyatları açıklamak: Başlangıç 3.500₺ (10K altı kişisel), Profesyonel 5.000₺ (10K-50K), VIP 7.500₺ (50K+ veya işletme)
-- Ödeme yöntemleri: Kredi kartı (Shopier) ve Kripto (BTC, ETH, USDT)
-- Süreç: 48-72 saat, %95 başarı oranı, başarısız olursa iade
-- Müşterileri sitedeki başvuru formunu doldurmaya veya destek@ighesapkurtar.com adresine e-posta göndermeye yönlendirmek
-- Kısa, samimi ve profesyonel cevaplar ver. Türkçe konuş.
-- Hesap kurtarma dışı konularda kibarca yönlendirme yap.
-- Asla şifre veya kişisel bilgi isteme.`;
+    function quickAsk(q) {
+      document.getElementById('chatInput').value = q;
+      const qa = document.getElementById('quickActions');
+      if (qa) qa.remove();
+      sendChat();
+    }
+
+    const SYSTEM_PROMPT = `Sen "IG Hesap Kurtar" (ighesapkurtar.com) şirketinin yapay zeka destekli müşteri destek asistanısın. Adın yok, sadece "asistan" olarak hitap edilirsin.
+
+## KİMLİĞİN
+- Instagram hesap kurtarma konusunda uzman bir AI asistansın
+- Samimi, güven veren, profesyonel ama sıcak bir üslupla konuşursun
+- Türkçe konuşursun, müşteri İngilizce yazarsa İngilizce yanıt verirsin
+- Kısa ve öz cevaplar verirsin (maks 3-4 cümle), uzun paragraflardan kaçınırsın
+- Emojileri ölçülü kullanırsın
+
+## HİZMETLER
+Kapatılan, hacklenen, askıya alınan, devre dışı bırakılan Instagram hesaplarını kurtarıyoruz.
+- Topluluk kuralları ihlali nedeniyle kapatılan hesaplar
+- Hacklenen ve ele geçirilen hesaplar (e-posta/şifre değiştirilmiş olsa bile)
+- Askıya alınan hesaplar (geçici veya kalıcı)
+- İki faktörlü doğrulama (2FA) sorunları
+- İşletme ve onaylı hesap kurtarma
+- Shadow ban ve kalıcı ban kaldırma
+
+## FİYATLAR
+- 📋 Başlangıç Paketi: 3.500₺ — 10K altı takipçili kişisel hesaplar, 48-72 saat
+- ⭐ Profesyonel Paket: 5.000₺ — 10K-50K takipçili hesaplar, öncelikli işlem, 48-72 saat
+- 🏆 VIP Paket: 7.500₺ — 50K+ takipçili ve işletme hesapları, acil müdahale, 24 saat içinde başlangıç
+- Tüm paketlerde başarısız olursa %50 iade garantisi
+
+## ÖDEME YÖNTEMLERİ
+- 💳 Kredi/Banka Kartı (Shopier güvenli altyapısı)
+- ₿ Kripto Para (BTC, ETH, USDT — NOWPayments altyapısı)
+
+## SÜREÇ
+1. Müşteri sitedeki formu doldurur (hesap adı, takipçi sayısı, hesap türü, durum açıklaması)
+2. Sistem otomatik olarak uygun paketi önerir
+3. Ödeme tamamlanır
+4. Profesyonel ekip kurtarma sürecini başlatır
+5. 48-72 saat içinde hesap teslim edilir
+6. Güvenlik danışmanlığı sunulur
+
+## İSTATİSTİKLER
+- 2.400+ başarıyla kurtarılan hesap
+- %95+ başarı oranı
+- 48-72 saat ortalama çözüm süresi
+
+## GÜVENLİK
+- Müşteriden asla şifre veya kişisel bilgi istemiyoruz
+- Instagram'ın resmi kanalları üzerinden yasal çerçevede çalışıyoruz
+- Hesap herhangi bir ek risk altına girmiyor
+
+## KURALLAR
+- Asla müşteriden şifre, kişisel bilgi veya kimlik bilgisi isteme
+- Hesap kurtarma dışı konularda kibarca yönlendir
+- Müşteriyi sitedeki başvuru formunu doldurmaya teşvik et
+- E-posta: destek@ighesapkurtar.com
+- Rakip hizmetler hakkında yorum yapma
+- Kesin tarih veya garanti verme, "genellikle" ve "çoğunlukla" gibi ifadeler kullan
+- Dolandırıcılık konusunda uyarılarda bulun (şifre isteyen, garantisiz çalışan hizmetlere dikkat)
+- Müşteri kızgın veya endişeliyse empati göster, sakinleştir`;
 
     let chatHistory = [];
+    let isProcessing = false;
 
     async function sendChat() {
+      if (isProcessing) return;
       const input = document.getElementById('chatInput');
       const msg = input.value.trim();
       if (!msg) return;
 
+      isProcessing = true;
       addMessage(msg, 'user');
       input.value = '';
       document.getElementById('chatSend').disabled = true;
 
-      const typing = addMessage('Yazıyor...', 'bot typing');
+      // Typing animation
+      const typingEl = document.createElement('div');
+      typingEl.className = 'chat-msg bot';
+      typingEl.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+      document.getElementById('chatMessages').appendChild(typingEl);
+      scrollChat();
 
       chatHistory.push({ role: 'user', content: msg });
 
-      try {
-        // Production'da /api/chat endpoint'i kullanılacak
-        // Claude.ai artifact ortamında doğrudan API çalışır
-        const apiUrl = window.location.hostname === 'localhost' || window.location.protocol === 'file:'
-          ? 'https://api.anthropic.com/v1/messages'
-          : (window.location.pathname.includes('/api/') ? '/api/chat' : 'https://api.anthropic.com/v1/messages');
+      // Keep history manageable (last 16 messages)
+      if (chatHistory.length > 16) chatHistory = chatHistory.slice(-16);
 
-        const res = await fetch(apiUrl, {
+      let reply = '';
+
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -729,51 +806,139 @@
           },
           body: JSON.stringify({
             model: 'claude-sonnet-4-6',
-            max_tokens: 500,
+            max_tokens: 400,
             system: SYSTEM_PROMPT,
             messages: chatHistory
           })
         });
 
-        if (!res.ok) throw new Error('API error: ' + res.status);
+        if (!res.ok) throw new Error(res.status);
         const data = await res.json();
-        typing.remove();
-
-        const reply = data.content?.map(b => b.text || '').join('') || fallbackReply(msg);
-        chatHistory.push({ role: 'assistant', content: reply });
-        addMessage(reply, 'bot');
+        reply = data.content?.map(b => b.text || '').join('') || '';
+        if (!reply) throw new Error('empty');
       } catch (e) {
-        typing.remove();
-        // Fallback: API erişilemezse akıllı lokal yanıtlar ver
-        const reply = fallbackReply(msg);
-        chatHistory.push({ role: 'assistant', content: reply });
-        addMessage(reply, 'bot');
+        // Smart fallback with NLP-like keyword matching
+        reply = smartFallback(msg);
       }
 
+      typingEl.remove();
+      chatHistory.push({ role: 'assistant', content: reply });
+
+      // Typewriter effect
+      await typeMessage(reply);
+
+      // Show contextual quick actions after certain responses
+      showContextualActions(msg, reply);
+
       document.getElementById('chatSend').disabled = false;
+      isProcessing = false;
+      document.getElementById('chatInput').focus();
     }
 
-    function fallbackReply(msg) {
-      const m = msg.toLowerCase();
-      if (m.includes('fiyat') || m.includes('ücret') || m.includes('kaç') || m.includes('para'))
-        return 'Fiyatlarımız hesap türüne göre değişir:\n\n📋 Başlangıç (10K altı): 3.500₺\n⭐ Profesyonel (10K-50K): 5.000₺\n🏆 VIP (50K+ / İşletme): 7.500₺\n\nTüm paketlerde başarısız olursa iade garantisi var. Detaylar için sayfadaki Fiyatlar bölümüne göz atabilirsiniz.';
-      if (m.includes('süre') || m.includes('zaman') || m.includes('kaç gün') || m.includes('kaç saat'))
-        return 'Hesap kurtarma süreci genellikle 48-72 saat içinde tamamlanır. Karmaşık vakalarda bu süre 5-7 güne uzayabilir. VIP paketimizde 24 saat içinde sürece başlanır.';
-      if (m.includes('ödeme') || m.includes('kart') || m.includes('kripto') || m.includes('bitcoin') || m.includes('nasıl öde'))
-        return 'İki ödeme yöntemimiz var:\n\n💳 Kredi/Banka Kartı (Shopier güvenli altyapısı)\n₿ Kripto Para (BTC, ETH, USDT)\n\nTüm ödemeler güvenli altyapılar üzerinden gerçekleştirilir.';
-      if (m.includes('iade') || m.includes('garanti') || m.includes('başarısız'))
-        return 'Evet, %100 iade garantisi sunuyoruz! Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin tamamını iade ediyoruz. Bu garanti tüm paketlerimiz için geçerlidir. Risk tamamen bizde.';
-      if (m.includes('güvenli') || m.includes('güven') || m.includes('dolandır') || m.includes('şifre'))
-        return 'Güvenliğiniz bizim için en önemli öncelik. Hesap şifrenizi veya kişisel bilgilerinizi asla talep etmiyoruz. Instagram\'ın resmi kanalları üzerinden, yasal ve etik çerçevede çalışıyoruz. 2.400+ başarılı kurtarma geçmişimiz var.';
-      if (m.includes('nasıl') || m.includes('süreç') || m.includes('adım'))
-        return 'Sürecimiz çok basit:\n\n1️⃣ Sayfadaki formu doldurun (hesap adı, takipçi sayısı, durum)\n2️⃣ Size uygun paket otomatik önerilir\n3️⃣ Ödeme sonrası ekibimiz kurtarma sürecini başlatır\n4️⃣ 48-72 saat içinde hesabınız teslim edilir\n\nHemen başlamak için sayfadaki Başvuru formunu doldurabilirsiniz!';
-      if (m.includes('merhaba') || m.includes('selam') || m.includes('hey'))
-        return 'Merhaba! 😊 Instagram hesabınızla ilgili size nasıl yardımcı olabilirim? Hesap kurtarma süreci, fiyatlar veya başka bir konu hakkında sorularınızı yanıtlayabilirim.';
-      if (m.includes('hack') || m.includes('çalın') || m.includes('ele geçir'))
-        return 'Hacklenen hesapları kurtarmada uzmanız. E-posta ve şifre değiştirilmiş olsa bile hesabınızı geri alabiliriz. Başarı oranımız %95+. Hemen sayfadaki formu doldurup durumunuzu anlatın, size en uygun paketi önerelim.';
-      if (m.includes('kapatıl') || m.includes('kapandı') || m.includes('ban') || m.includes('askıya'))
-        return 'Kapatılan veya askıya alınan hesapları kurtarma konusunda 2.400+ başarılı işlem gerçekleştirdik. Topluluk kuralları ihlali, spam şüphesi veya haksız kapatma — hangi sebep olursa olsun çözüm sunuyoruz. Formu doldurarak ücretsiz analiz alabilirsiniz.';
-      return 'Teşekkürler mesajınız için! Instagram hesap kurtarma hakkında size yardımcı olabilirim. Fiyatlar, süreç, ödeme yöntemleri veya başka bir konuda soru sorabilirsiniz. Hemen başvuru yapmak isterseniz sayfadaki formu doldurmanız yeterli. 😊';
+    async function typeMessage(text) {
+      const container = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = 'chat-msg bot';
+      container.appendChild(div);
+
+      const words = text.split(' ');
+      let current = '';
+      for (let i = 0; i < words.length; i++) {
+        current += (i > 0 ? ' ' : '') + words[i];
+        div.textContent = current;
+        scrollChat();
+        await new Promise(r => setTimeout(r, 25 + Math.random() * 20));
+      }
+    }
+
+    function scrollChat() {
+      const c = document.getElementById('chatMessages');
+      c.scrollTop = c.scrollHeight;
+    }
+
+    function showContextualActions(userMsg, botReply) {
+      const m = userMsg.toLowerCase();
+      const container = document.getElementById('chatMessages');
+      let actions = [];
+
+      if (m.includes('fiyat') || m.includes('ücret') || m.includes('kaç'))
+        actions = [['⚙️ Nasıl çalışır?', 'Kurtarma süreci nasıl işliyor?'], ['📋 Başvuru yap', 'Başvuru formunu doldurmak istiyorum']];
+      else if (m.includes('hack') || m.includes('çalın') || m.includes('kapatıl') || m.includes('ban') || m.includes('askıya'))
+        actions = [['💰 Fiyat öğren', 'Bu durum için fiyat ne kadar?'], ['📋 Başvuru yap', 'Başvuru formunu doldurmak istiyorum']];
+      else if (m.includes('nasıl') || m.includes('süreç'))
+        actions = [['💰 Fiyatlar', 'Fiyatlarınız nedir?'], ['📋 Hemen başla', 'Başvuru yapmak istiyorum']];
+
+      if (actions.length > 0) {
+        const actDiv = document.createElement('div');
+        actDiv.className = 'quick-actions';
+        actions.forEach(([label, query]) => {
+          const btn = document.createElement('button');
+          btn.className = 'quick-btn';
+          btn.textContent = label;
+          btn.onclick = () => { actDiv.remove(); quickAsk(query); };
+          actDiv.appendChild(btn);
+        });
+        container.appendChild(actDiv);
+        scrollChat();
+      }
+    }
+
+    function smartFallback(msg) {
+      const m = msg.toLowerCase().replace(/[ıİ]/g, 'i').replace(/[şŞ]/g, 's').replace(/[çÇ]/g, 'c').replace(/[ğĞ]/g, 'g').replace(/[üÜ]/g, 'u').replace(/[öÖ]/g, 'o');
+
+      // Greeting patterns
+      if (/^(merhaba|selam|hey|naber|iyi gunler|iyi aksamlar|mrbh?|slm)/.test(m))
+        return 'Merhaba! 😊 Instagram hesabınızla ilgili size nasıl yardımcı olabilirim?';
+
+      // Pricing
+      if (/fiyat|ucret|kac|para|maliyet|butce|pahali|ucuz|ne kadar/.test(m))
+        return 'Fiyatlarımız hesap türüne göre belirlenir:\n\n📋 Başlangıç: 3.500₺ (10K altı kişisel)\n⭐ Profesyonel: 5.000₺ (10K-50K takipçi)\n🏆 VIP: 7.500₺ (50K+ veya işletme)\n\nTüm paketlerde başarısız olursa %50 iade garantisi var.';
+
+      // Duration
+      if (/sure|zaman|kac gun|kac saat|ne kadar surer|hizli|acil|bekle/.test(m))
+        return 'Kurtarma süreci genellikle 48-72 saat içinde tamamlanır. VIP paketimizde 24 saat içinde sürece başlanır. Karmaşık vakalarda süre 5-7 güne uzayabilir.';
+
+      // Payment
+      if (/odeme|kart|kripto|bitcoin|usdt|ethereum|nasil ode|shopier/.test(m))
+        return 'İki ödeme yöntemimiz var:\n\n💳 Kredi/Banka Kartı — Shopier güvenli altyapısıyla\n₿ Kripto — BTC, ETH, USDT kabul ediyoruz\n\nÖdeme sonrası ekibimiz hemen sürece başlar.';
+
+      // Refund / guarantee
+      if (/iade|garanti|basarisiz|para geri|geri ver/.test(m))
+        return 'Evet! Tüm paketlerimizde %50 iade garantisi var. Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin %50\'sini iade ediyoruz. Bu garanti her paket için geçerlidir.';
+
+      // Security concerns
+      if (/guvenli|guven|dolandir|sahte|sifre|risk|emin/.test(m))
+        return 'Güvenliğiniz bizim için en önemli öncelik. Hesap şifrenizi veya kişisel bilgilerinizi asla talep etmiyoruz. Instagram\'ın resmi kanalları üzerinden yasal çerçevede çalışıyoruz. 2.400+ başarılı kurtarma geçmişimiz var.';
+
+      // Hacked
+      if (/hack|calın|calindi|ele gecir|sifre degis|eposta degis/.test(m))
+        return 'Hacklenen hesapları kurtarmada çok deneyimliyiz. E-posta ve şifre değiştirilmiş olsa bile hesabınızı geri alabiliriz. Başarı oranımız %95+. Hemen sayfadaki formu doldurup durumunuzu anlatın, size en uygun paketi önerelim! 👆';
+
+      // Closed/banned/suspended
+      if (/kapatil|kapandi|kapali|ban|askiya|devre disi|engel|kaldiril/.test(m))
+        return 'Kapatılan, askıya alınan ve ban yiyen hesapları kurtarma konusunda 2.400+ başarılı işlem gerçekleştirdik. Hangi sebepten kapatılmış olursa olsun çözüm üretiyoruz. Sayfadaki formu doldurarak ücretsiz durum analizi alabilirsiniz! 👆';
+
+      // Process / how it works
+      if (/nasil|surec|adim|isliyor|calisiyor|yapiyorsunuz|ne yapma/.test(m))
+        return 'Sürecimiz çok basit:\n\n1️⃣ Sayfadaki formu doldurun\n2️⃣ Sistem size uygun paketi önerir\n3️⃣ Ödeme sonrası ekibimiz çalışmaya başlar\n4️⃣ 48-72 saat içinde hesabınız teslim edilir\n\nHemen başlamak için yukarıdaki Başvuru bölümünü kullanabilirsiniz!';
+
+      // Application
+      if (/basvur|form|basla|kayit|hemen|istiyorum|yardim/.test(m))
+        return 'Harika! Hemen başlayalım. Sayfadaki Başvuru bölümüne giderek formu doldurmanız yeterli. Hesap adınızı, takipçi sayınızı ve durumunuzu yazın — sistem size otomatik olarak en uygun paketi önerecek. ☝️';
+
+      // Thanks
+      if (/tesekkur|sagol|eyv|tamam|anladim|iyi|super/.test(m))
+        return 'Rica ederim! 😊 Başka sorunuz olursa çekinmeden yazın. Hesabınızı kurtarmak için sayfadaki formu doldurmanız yeterli. Size yardımcı olmaktan mutluluk duyarız!';
+
+      // Instagram specific questions
+      if (/2fa|iki faktor|dogrulama|kimlik/.test(m))
+        return 'İki faktörlü doğrulama (2FA) sorunu veya kimlik doğrulama problemi yaşıyorsanız da yardımcı olabiliriz. Bu tür vakalar da kurtarma sürecimizin kapsamındadır. Detaylar için formu doldurun, durumunuzu analiz edelim.';
+
+      if (/isletme|business|reklam|facebook|meta/.test(m))
+        return 'İşletme hesapları için VIP paketimiz (7.500₺) özel öncelikli hizmet sunar. Reklam hesabı bağlantılarının korunması ve Facebook/Meta entegrasyonlarının yeniden aktif edilmesi dahildir. Acil müdahale ekibimiz 24 saat içinde başlar.';
+
+      // Catch-all
+      return 'Instagram hesap kurtarma hakkında size yardımcı olabilirim — fiyatlar, süreç, ödeme yöntemleri veya başka bir konuda soru sorabilirsiniz. Ya da hemen başvuru yapmak için sayfadaki formu doldurabilirsiniz! 😊';
     }
 
     function addMessage(text, cls) {
@@ -782,7 +947,7 @@
       div.className = 'chat-msg ' + cls;
       div.textContent = text;
       container.appendChild(div);
-      container.scrollTop = container.scrollHeight;
+      scrollChat();
       return div;
     }
   </script>
