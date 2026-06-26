@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FCAF45"/>
+      <stop offset="25%" style="stop-color:#F77737"/>
+      <stop offset="50%" style="stop-color:#E1306C"/>
+      <stop offset="75%" style="stop-color:#C13584"/>
+      <stop offset="100%" style="stop-color:#833AB4"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square (Instagram style) -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="url(#ig)"/>
+  <!-- Shield shape (trust/security) -->
+  <path d="M256 120 L356 170 L356 280 C356 340 310 390 256 410 C202 390 156 340 156 280 L156 170 Z" fill="rgba(255,255,255,0.95)"/>
+  <!-- Checkmark (recovery/success) -->
+  <path d="M220 280 L248 308 L300 230" fill="none" stroke="url(#ig)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
