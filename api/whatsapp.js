@@ -122,6 +122,11 @@ module.exports = async function handler(req, res) {
     });
 
     const aiData = await aiResponse.json();
+
+    if (!aiResponse.ok) {
+      console.error('[WhatsApp] Anthropic API hatası:', aiResponse.status, JSON.stringify(aiData));
+    }
+
     const reply = aiData.content?.[0]?.text || 'Şu anda yanıt veremedim. Lütfen web sitemiz üzerinden bize ulaşın: www.ighesapkurtar.com';
 
     // Yanıtı geçmişe ekle
