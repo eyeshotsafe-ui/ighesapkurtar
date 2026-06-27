@@ -74,6 +74,14 @@
     /* HERO */
     .hero{padding:140px 0 100px;background:linear-gradient(165deg,#FDF0F5 0%,#FFFFFF 40%,#FFF7ED 100%);position:relative;overflow:hidden}
     .hero::after{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(214,41,118,0.06) 0%,transparent 70%);pointer-events:none}
+
+    /* HERO ANIMATED BACKGROUND */
+    .hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;animation:orbFloat ease-in-out infinite}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-25px) scale(1.1)}66%{transform:translate(-25px,18px) scale(0.92)}}
+    .hero-icon{position:absolute;bottom:-8%;opacity:0;animation:iconFloat linear infinite}
+    @keyframes iconFloat{0%{transform:translateY(0) rotate(0deg);opacity:0}8%{opacity:.16}92%{opacity:.16}100%{transform:translateY(-125vh) rotate(20deg);opacity:0}}
+    @media (prefers-reduced-motion: reduce){.hero-orb,.hero-icon{animation:none;opacity:0}}
     .hero-content{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-light);border:1px solid rgba(5,150,105,0.15);padding:6px 16px;border-radius:100px;font-size:13px;color:var(--green);font-weight:600;margin-bottom:28px}
     .hero-badge .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:float 2s ease-in-out infinite}
@@ -324,6 +332,19 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-orb" style="width:380px;height:380px;background:radial-gradient(circle,#FEDA75,transparent 70%);top:-90px;left:4%;animation-duration:16s"></div>
+      <div class="hero-orb" style="width:320px;height:320px;background:radial-gradient(circle,#D62976,transparent 70%);top:35%;right:6%;animation-duration:13s;animation-delay:-4s"></div>
+      <div class="hero-orb" style="width:300px;height:300px;background:radial-gradient(circle,#962FBF,transparent 70%);bottom:-70px;left:28%;animation-duration:18s;animation-delay:-8s"></div>
+
+      <svg class="hero-icon" style="left:6%;width:38px;height:38px;animation-duration:24s;animation-delay:-2s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#FA7E1E" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#FA7E1E" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#FA7E1E"/></svg>
+      <svg class="hero-icon" style="left:16%;width:52px;height:52px;animation-duration:30s;animation-delay:-14s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#D62976" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#D62976" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#D62976"/></svg>
+      <svg class="hero-icon" style="left:30%;width:30px;height:30px;animation-duration:20s;animation-delay:-9s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#962FBF" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#962FBF" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#962FBF"/></svg>
+      <svg class="hero-icon" style="left:48%;width:44px;height:44px;animation-duration:26s;animation-delay:-18s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#4F5BD5" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#4F5BD5" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#4F5BD5"/></svg>
+      <svg class="hero-icon" style="left:64%;width:34px;height:34px;animation-duration:22s;animation-delay:-5s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#FEDA75" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#FEDA75" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#FEDA75"/></svg>
+      <svg class="hero-icon" style="left:78%;width:48px;height:48px;animation-duration:28s;animation-delay:-12s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#FA7E1E" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#FA7E1E" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#FA7E1E"/></svg>
+      <svg class="hero-icon" style="left:90%;width:32px;height:32px;animation-duration:19s;animation-delay:-16s" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="22" fill="none" stroke="#D62976" stroke-width="6"/><circle cx="50" cy="52" r="20" fill="none" stroke="#D62976" stroke-width="6"/><circle cx="72" cy="30" r="5" fill="#D62976"/></svg>
+    </div>
     <div class="container hero-content">
       <div class="hero-badge"><span class="dot"></span> 7/24 Destek · Türkiye Geneli Hizmet</div>
       <h1>Instagram Hesabınız mı<br><span class="highlight">Kapatıldı?</span></h1>
