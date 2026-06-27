@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaka Paneli | IG Hesap Kurtar</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#F8FAFC;--white:#FFFFFF;--border:#E2E8F0;--text:#0F172A;--text-muted:#64748B;--text-light:#94A3B8;
+      --primary:#1D4ED8;--primary-light:#DBEAFE;--green:#059669;--green-light:#D1FAE5;
+      --yellow:#D97706;--yellow-light:#FEF3C7;--red:#DC2626;--red-light:#FEE2E2;
+      --purple:#7C3AED;--purple-light:#EDE9FE;
+    }
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+    .login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+    .login-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:380px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+    .login-box h1{font-size:20px;font-weight:800;margin-bottom:8px}
+    .login-box p{font-size:14px;color:var(--text-muted);margin-bottom:24px}
+    .login-box input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;margin-bottom:12px;font-family:inherit}
+    .login-box button{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit}
+    .login-error{color:var(--red);font-size:13px;margin-top:8px;display:none}
+
+    .app{display:none}
+    .app.show{display:block}
+
+    header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+    header h1{font-size:18px;font-weight:800}
+    header .stats{display:flex;gap:16px;font-size:13px;color:var(--text-muted)}
+    .refresh-btn{background:var(--primary-light);color:var(--primary);border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:inherit}
+
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    .filter-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+    .filter-btn{background:var(--white);border:1px solid var(--border);padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text-muted);font-family:inherit}
+    .filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+    .case-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+    .case-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;gap:12px;flex-wrap:wrap}
+    .case-info h3{font-size:15px;font-weight:700;margin-bottom:4px}
+    .case-info .username{color:var(--primary);font-weight:600}
+    .case-meta{font-size:12px;color:var(--text-light);display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+    .status-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;white-space:nowrap}
+    .status-yeni{background:var(--purple-light);color:var(--purple)}
+    .status-inceleniyor{background:var(--yellow-light);color:var(--yellow)}
+    .status-itiraz_gonderildi{background:var(--primary-light);color:var(--primary)}
+    .status-instagram_bekleniyor{background:#FEF3C7;color:#92400E}
+    .status-kurtarildi{background:var(--green-light);color:var(--green)}
+    .status-basarisiz{background:var(--red-light);color:var(--red)}
+
+    .case-desc{font-size:13px;color:var(--text-muted);background:var(--bg);padding:10px 12px;border-radius:8px;margin-bottom:14px;line-height:1.5}
+
+    .case-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .case-actions select{padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white)}
+    .case-actions button{padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:inherit}
+    .case-actions button:disabled{opacity:0.5;cursor:not-allowed}
+    .wa-link{font-size:12px;color:var(--green);text-decoration:none;font-weight:600;margin-left:auto}
+
+    .empty-state{text-align:center;padding:60px 20px;color:var(--text-light)}
+    .loading{text-align:center;padding:40px;color:var(--text-light)}
+
+    .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;display:none;z-index:100}
+    .toast.show{display:block;animation:fadeIn .3s}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    @media(max-width:640px){
+      header{flex-direction:column;gap:8px;align-items:flex-start}
+      .case-top{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <h1>🔐 Vaka Paneli</h1>
+      <p>Devam etmek için admin şifrenizi girin</p>
+      <input type="password" id="adminPassword" placeholder="Admin şifresi" onkeydown="if(event.key==='Enter')login()">
+      <button onclick="login()">Giriş Yap</button>
+      <div class="login-error" id="loginError">Hatalı şifre, lütfen tekrar deneyin.</div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div class="app" id="app">
+    <header>
+      <h1>📋 IG Hesap Kurtar — Vaka Paneli</h1>
+      <div class="stats" id="headerStats">Yükleniyor...</div>
+      <button class="refresh-btn" onclick="loadCases()">🔄 Yenile</button>
+    </header>
+
+    <div class="container">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Tümü</button>
+        <button class="filter-btn" data-filter="yeni" onclick="setFilter('yeni')">Yeni</button>
+        <button class="filter-btn" data-filter="inceleniyor" onclick="setFilter('inceleniyor')">İnceleniyor</button>
+        <button class="filter-btn" data-filter="itiraz_gonderildi" onclick="setFilter('itiraz_gonderildi')">İtiraz Gönderildi</button>
+        <button class="filter-btn" data-filter="instagram_bekleniyor" onclick="setFilter('instagram_bekleniyor')">Instagram Bekleniyor</button>
+        <button class="filter-btn" data-filter="kurtarildi" onclick="setFilter('kurtarildi')">Kurtarıldı</button>
+        <button class="filter-btn" data-filter="basarisiz" onclick="setFilter('basarisiz')">Başarısız</button>
+      </div>
+
+      <div id="casesList"><div class="loading">Vakalar yükleniyor...</div></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let adminKey = '';
+    let allCases = [];
+    let currentFilter = 'all';
+
+    const STATUS_LABELS = {
+      yeni: 'Yeni', inceleniyor: 'İnceleniyor', itiraz_gonderildi: 'İtiraz Gönderildi',
+      instagram_bekleniyor: 'Instagram Bekleniyor', kurtarildi: 'Kurtarıldı', basarisiz: 'Başarısız'
+    };
+    const PACKAGE_LABELS = { baslangic: '📋 Başlangıç (3.999₺)', profesyonel: '⭐ Profesyonel (5.999₺)', vip: '🏆 VIP (8.999₺)' };
+    const TYPE_LABELS = { personal: 'Kişisel', business: 'İşletme' };
+
+    function login() {
+      const pw = document.getElementById('adminPassword').value;
+      if (!pw) return;
+      adminKey = pw;
+      // Doğrulama için bir istek deneyelim
+      fetch('/api/cases', { headers: { 'x-admin-key': adminKey } })
+        .then(r => {
+          if (r.status === 401) {
+            document.getElementById('loginError').style.display = 'block';
+            return;
+          }
+          localStorage.setItem('ig_admin_key', adminKey);
+          document.getElementById('loginScreen').style.display = 'none';
+          document.getElementById('app').classList.add('show');
+          loadCases();
+        })
+        .catch(() => { document.getElementById('loginError').style.display = 'block'; });
+    }
+
+    function setFilter(f) {
+      currentFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+      renderCases();
+    }
+
+    async function loadCases() {
+      document.getElementById('casesList').innerHTML = '<div class="loading">Yükleniyor...</div>';
+      try {
+        const res = await fetch('/api/cases', { headers: { 'x-admin-key': adminKey } });
+        if (!res.ok) throw new Error('Yetkisiz');
+        const data = await res.json();
+        allCases = data.cases || [];
+        updateHeaderStats();
+        renderCases();
+      } catch (e) {
+        document.getElementById('casesList').innerHTML = '<div class="empty-state">Vakalar yüklenemedi. Şifrenizi kontrol edin.</div>';
+      }
+    }
+
+    function updateHeaderStats() {
+      const total = allCases.length;
+      const active = allCases.filter(c => !['kurtarildi', 'basarisiz'].includes(c.status)).length;
+      document.getElementById('headerStats').textContent = `Toplam: ${total} · Aktif: ${active}`;
+    }
+
+    function renderCases() {
+      const filtered = currentFilter === 'all' ? allCases : allCases.filter(c => c.status === currentFilter);
+      const container = document.getElementById('casesList');
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="empty-state">Bu filtrede vaka yok.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => {
+        const date = new Date(c.updatedAt).toLocaleString('tr-TR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+        const phoneClean = (c.phone || '').replace('whatsapp:', '').replace('+', '');
+        return `
+        <div class="case-card">
+          <div class="case-top">
+            <div class="case-info">
+              <h3>${c.name || 'Bilinmiyor'} ${c.username ? `· <span class="username">@${c.username}</span>` : ''}</h3>
+              <div class="case-meta">
+                <span>👥 ${c.followers ? c.followers.toLocaleString('tr-TR') : '?'} takipçi</span>
+                <span>${c.type ? TYPE_LABELS[c.type] || c.type : '?'}</span>
+                <span>${c.package ? PACKAGE_LABELS[c.package] || c.package : 'Paket belirsiz'}</span>
+                <span>🕐 ${date}</span>
+              </div>
+            </div>
+            <span class="status-badge status-${c.status}">${STATUS_LABELS[c.status] || c.status}</span>
+          </div>
+          <div class="case-desc">${c.description || 'Açıklama yok'}</div>
+          <div class="case-actions">
+            <select id="select-${c.id}">
+              ${Object.entries(STATUS_LABELS).map(([k, v]) => `<option value="${k}" ${k === c.status ? 'selected' : ''}>${v}</option>`).join('')}
+            </select>
+            <button onclick="updateStatus('${c.id}')">Durumu Güncelle (WhatsApp Gönder)</button>
+            <a class="wa-link" href="https://wa.me/${phoneClean}" target="_blank">💬 WhatsApp'ta Aç</a>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    async function updateStatus(id) {
+      const select = document.getElementById(`select-${id}`);
+      const newStatus = select.value;
+      const btn = select.nextElementSibling;
+      btn.disabled = true;
+      btn.textContent = 'Gönderiliyor...';
+
+      try {
+        const res = await fetch('/api/case-update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-key': adminKey },
+          body: JSON.stringify({ id, status: newStatus })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.notified ? '✅ Durum güncellendi, müşteriye WhatsApp gönderildi' : '✅ Durum güncellendi (mesaj gönderilemedi)');
+          loadCases();
+        } else {
+          showToast('❌ Hata: ' + (data.error || 'Bilinmeyen hata'));
+        }
+      } catch (e) {
+        showToast('❌ Bağlantı hatası');
+      }
+      btn.disabled = false;
+      btn.textContent = 'Durumu Güncelle (WhatsApp Gönder)';
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    // Sayfa açılışında kayıtlı şifreyi dene
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('ig_admin_key');
+      if (saved) {
+        document.getElementById('adminPassword').value = saved;
+        login();
+      }
+    });
+  </script>
+</body>
+</html>
