@@ -1,5 +1,5 @@
 // /api/whatsapp.js — WhatsApp AI Asistan (Twilio + Claude + Vaka Takip Sistemi)
-const { kv } = require('./_kv');
+const { createCase, getCaseIdByPhone, getCaseById, updateCase } = require('./_case-store');
 
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
@@ -93,48 +93,35 @@ Kurallar:
 
 async function saveOrUpdateCase(phone, name, caseData) {
   try {
-    const existingId = await kv('get', `phone-case:${phone}`);
+    const existingId = await getCaseIdByPhone(phone);
 
     if (existingId) {
-      const existing = await kv('get', `case:${existingId}`);
+      const existing = await getCaseById(existingId);
       if (existing) {
-        const parsed = JSON.parse(existing);
-        const updated = {
-          ...parsed,
-          username: caseData.username || parsed.username,
-          followers: caseData.followers || parsed.followers,
-          type: caseData.type || parsed.type,
-          description: caseData.description || parsed.description,
-          package: caseData.package || parsed.package,
-          updatedAt: new Date().toISOString()
-        };
-        await kv('set', `case:${existingId}`, JSON.stringify(updated));
+        const patch = {};
+        ['username', 'followers', 'type', 'description', 'package'].forEach(f => {
+          if (caseData[f] !== undefined && caseData[f] !== null && caseData[f] !== '') patch[f] = caseData[f];
+        });
+        await updateCase(existingId, patch);
         console.log(`[Case] Güncellendi: ${existingId}`);
         return existingId;
       }
     }
 
-    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    const newCase = {
-      id,
+    const created = await createCase({
+      source: 'whatsapp',
+      status: 'yeni',
       phone,
       name: name || 'Bilinmiyor',
       username: caseData.username,
       followers: caseData.followers,
       type: caseData.type,
       description: caseData.description,
-      package: caseData.package,
-      status: 'yeni',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    };
+      package: caseData.package
+    });
 
-    await kv('set', `case:${id}`, JSON.stringify(newCase));
-    await kv('lpush', 'cases:all', id);
-    await kv('set', `phone-case:${phone}`, id);
-
-    console.log(`[Case] Yeni vaka oluşturuldu: ${id}`);
-    return id;
+    console.log(`[Case] Yeni vaka oluşturuldu: ${created.id}`);
+    return created.id;
   } catch (err) {
     console.error('[Case] Kaydetme hatası:', err.message);
     return null;

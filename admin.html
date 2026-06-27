@@ -12,7 +12,7 @@
       --bg:#F8FAFC;--white:#FFFFFF;--border:#E2E8F0;--text:#0F172A;--text-muted:#64748B;--text-light:#94A3B8;
       --primary:#1D4ED8;--primary-light:#DBEAFE;--green:#059669;--green-light:#D1FAE5;
       --yellow:#D97706;--yellow-light:#FEF3C7;--red:#DC2626;--red-light:#FEE2E2;
-      --purple:#7C3AED;--purple-light:#EDE9FE;
+      --purple:#7C3AED;--purple-light:#EDE9FE;--teal:#0D9488;--teal-light:#CCFBF1;
     }
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
@@ -27,14 +27,16 @@
     .app{display:none}
     .app.show{display:block}
 
-    header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+    header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:8px}
     header h1{font-size:18px;font-weight:800}
     header .stats{display:flex;gap:16px;font-size:13px;color:var(--text-muted)}
     .refresh-btn{background:var(--primary-light);color:var(--primary);border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:inherit}
 
     .container{max-width:1100px;margin:0 auto;padding:24px}
 
-    .filter-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+    .filter-row{margin-bottom:12px}
+    .filter-row .label{font-size:11px;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap}
     .filter-btn{background:var(--white);border:1px solid var(--border);padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text-muted);font-family:inherit}
     .filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 
@@ -43,32 +45,43 @@
     .case-info h3{font-size:15px;font-weight:700;margin-bottom:4px}
     .case-info .username{color:var(--primary);font-weight:600}
     .case-meta{font-size:12px;color:var(--text-light);display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
-    .status-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;white-space:nowrap}
+    .badges{display:flex;gap:6px;flex-direction:column;align-items:flex-end}
+    .status-badge,.source-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;white-space:nowrap}
     .status-yeni{background:var(--purple-light);color:var(--purple)}
+    .status-odeme_alindi{background:var(--teal-light);color:var(--teal)}
     .status-inceleniyor{background:var(--yellow-light);color:var(--yellow)}
     .status-itiraz_gonderildi{background:var(--primary-light);color:var(--primary)}
     .status-instagram_bekleniyor{background:#FEF3C7;color:#92400E}
     .status-kurtarildi{background:var(--green-light);color:var(--green)}
     .status-basarisiz{background:var(--red-light);color:var(--red)}
+    .source-whatsapp{background:#DCFCE7;color:#166534}
+    .source-form{background:#E0E7FF;color:#3730A3}
+    .source-shopier{background:#FCE7F3;color:#9D174D}
 
-    .case-desc{font-size:13px;color:var(--text-muted);background:var(--bg);padding:10px 12px;border-radius:8px;margin-bottom:14px;line-height:1.5}
+    .case-desc{font-size:13px;color:var(--text-muted);background:var(--bg);padding:10px 12px;border-radius:8px;margin-bottom:10px;line-height:1.5}
+    .payment-info{font-size:13px;background:var(--teal-light);color:#115E59;padding:8px 12px;border-radius:8px;margin-bottom:10px;font-weight:600}
+    .contact-info{font-size:12px;color:var(--text-muted);margin-bottom:10px}
 
     .case-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .case-actions select{padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--white)}
     .case-actions button{padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;font-family:inherit}
     .case-actions button:disabled{opacity:0.5;cursor:not-allowed}
-    .wa-link{font-size:12px;color:var(--green);text-decoration:none;font-weight:600;margin-left:auto}
+    .wa-link,.mail-link,.raw-toggle{font-size:12px;color:var(--green);text-decoration:none;font-weight:600}
+    .raw-toggle{color:var(--text-light);cursor:pointer;background:none;border:none;font-family:inherit}
+    .raw-box{display:none;margin-top:10px;background:#1E293B;color:#CBD5E1;padding:12px;border-radius:8px;font-size:11px;overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+    .raw-box.show{display:block}
 
     .empty-state{text-align:center;padding:60px 20px;color:var(--text-light)}
     .loading{text-align:center;padding:40px;color:var(--text-light)}
 
-    .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;display:none;z-index:100}
+    .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;display:none;z-index:100;max-width:320px}
     .toast.show{display:block;animation:fadeIn .3s}
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
     @media(max-width:640px){
-      header{flex-direction:column;gap:8px;align-items:flex-start}
+      header{flex-direction:column;align-items:flex-start}
       .case-top{flex-direction:column}
+      .badges{flex-direction:row;align-items:flex-start}
     }
   </style>
 </head>
@@ -94,14 +107,29 @@
     </header>
 
     <div class="container">
-      <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Tümü</button>
-        <button class="filter-btn" data-filter="yeni" onclick="setFilter('yeni')">Yeni</button>
-        <button class="filter-btn" data-filter="inceleniyor" onclick="setFilter('inceleniyor')">İnceleniyor</button>
-        <button class="filter-btn" data-filter="itiraz_gonderildi" onclick="setFilter('itiraz_gonderildi')">İtiraz Gönderildi</button>
-        <button class="filter-btn" data-filter="instagram_bekleniyor" onclick="setFilter('instagram_bekleniyor')">Instagram Bekleniyor</button>
-        <button class="filter-btn" data-filter="kurtarildi" onclick="setFilter('kurtarildi')">Kurtarıldı</button>
-        <button class="filter-btn" data-filter="basarisiz" onclick="setFilter('basarisiz')">Başarısız</button>
+
+      <div class="filter-row">
+        <div class="label">Kaynak</div>
+        <div class="filter-bar" id="sourceFilterBar">
+          <button class="filter-btn active" data-source="all" onclick="setSourceFilter('all')">Tümü</button>
+          <button class="filter-btn" data-source="whatsapp" onclick="setSourceFilter('whatsapp')">💬 WhatsApp</button>
+          <button class="filter-btn" data-source="form" onclick="setSourceFilter('form')">📋 Web Formu</button>
+          <button class="filter-btn" data-source="shopier" onclick="setSourceFilter('shopier')">💳 Shopier Ödemesi</button>
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <div class="label">Durum</div>
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Tümü</button>
+          <button class="filter-btn" data-filter="yeni" onclick="setFilter('yeni')">Yeni</button>
+          <button class="filter-btn" data-filter="odeme_alindi" onclick="setFilter('odeme_alindi')">Ödeme Alındı</button>
+          <button class="filter-btn" data-filter="inceleniyor" onclick="setFilter('inceleniyor')">İnceleniyor</button>
+          <button class="filter-btn" data-filter="itiraz_gonderildi" onclick="setFilter('itiraz_gonderildi')">İtiraz Gönderildi</button>
+          <button class="filter-btn" data-filter="instagram_bekleniyor" onclick="setFilter('instagram_bekleniyor')">Instagram Bekleniyor</button>
+          <button class="filter-btn" data-filter="kurtarildi" onclick="setFilter('kurtarildi')">Kurtarıldı</button>
+          <button class="filter-btn" data-filter="basarisiz" onclick="setFilter('basarisiz')">Başarısız</button>
+        </div>
       </div>
 
       <div id="casesList"><div class="loading">Vakalar yükleniyor...</div></div>
@@ -114,11 +142,13 @@
     let adminKey = '';
     let allCases = [];
     let currentFilter = 'all';
+    let currentSourceFilter = 'all';
 
     const STATUS_LABELS = {
-      yeni: 'Yeni', inceleniyor: 'İnceleniyor', itiraz_gonderildi: 'İtiraz Gönderildi',
+      yeni: 'Yeni', odeme_alindi: 'Ödeme Alındı', inceleniyor: 'İnceleniyor', itiraz_gonderildi: 'İtiraz Gönderildi',
       instagram_bekleniyor: 'Instagram Bekleniyor', kurtarildi: 'Kurtarıldı', basarisiz: 'Başarısız'
     };
+    const SOURCE_LABELS = { whatsapp: '💬 WhatsApp', form: '📋 Web Formu', shopier: '💳 Shopier' };
     const PACKAGE_LABELS = { baslangic: '📋 Başlangıç (3.999₺)', profesyonel: '⭐ Profesyonel (5.999₺)', vip: '🏆 VIP (8.999₺)' };
     const TYPE_LABELS = { personal: 'Kişisel', business: 'İşletme' };
 
@@ -126,7 +156,6 @@
       const pw = document.getElementById('adminPassword').value;
       if (!pw) return;
       adminKey = pw;
-      // Doğrulama için bir istek deneyelim
       fetch('/api/cases', { headers: { 'x-admin-key': adminKey } })
         .then(r => {
           if (r.status === 401) {
@@ -143,7 +172,13 @@
 
     function setFilter(f) {
       currentFilter = f;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+      document.querySelectorAll('#filterBar .filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+      renderCases();
+    }
+
+    function setSourceFilter(s) {
+      currentSourceFilter = s;
+      document.querySelectorAll('#sourceFilterBar .filter-btn').forEach(b => b.classList.toggle('active', b.dataset.source === s));
       renderCases();
     }
 
@@ -164,11 +199,14 @@
     function updateHeaderStats() {
       const total = allCases.length;
       const active = allCases.filter(c => !['kurtarildi', 'basarisiz'].includes(c.status)).length;
-      document.getElementById('headerStats').textContent = `Toplam: ${total} · Aktif: ${active}`;
+      const paid = allCases.filter(c => c.source === 'shopier').length;
+      document.getElementById('headerStats').textContent = `Toplam: ${total} · Aktif: ${active} · Ödeme: ${paid}`;
     }
 
     function renderCases() {
-      const filtered = currentFilter === 'all' ? allCases : allCases.filter(c => c.status === currentFilter);
+      let filtered = currentFilter === 'all' ? allCases : allCases.filter(c => c.status === currentFilter);
+      if (currentSourceFilter !== 'all') filtered = filtered.filter(c => c.source === currentSourceFilter);
+
       const container = document.getElementById('casesList');
 
       if (filtered.length === 0) {
@@ -178,29 +216,45 @@
 
       container.innerHTML = filtered.map(c => {
         const date = new Date(c.updatedAt).toLocaleString('tr-TR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
-        const phoneClean = (c.phone || '').replace('whatsapp:', '').replace('+', '');
+        const phoneClean = c.phone ? String(c.phone).replace('whatsapp:', '').replace(/[^\d+]/g, '').replace('+', '') : null;
+        const hasRaw = c.raw && Object.keys(c.raw).length > 0;
+        const rawId = `raw-${c.id}`;
+
         return `
         <div class="case-card">
           <div class="case-top">
             <div class="case-info">
               <h3>${c.name || 'Bilinmiyor'} ${c.username ? `· <span class="username">@${c.username}</span>` : ''}</h3>
               <div class="case-meta">
-                <span>👥 ${c.followers ? c.followers.toLocaleString('tr-TR') : '?'} takipçi</span>
-                <span>${c.type ? TYPE_LABELS[c.type] || c.type : '?'}</span>
-                <span>${c.package ? PACKAGE_LABELS[c.package] || c.package : 'Paket belirsiz'}</span>
+                ${c.followers ? `<span>👥 ${Number(c.followers).toLocaleString('tr-TR')} takipçi</span>` : ''}
+                ${c.type ? `<span>${TYPE_LABELS[c.type] || c.type}</span>` : ''}
+                ${c.package ? `<span>${PACKAGE_LABELS[c.package] || c.package}</span>` : '<span>Paket belirsiz</span>'}
                 <span>🕐 ${date}</span>
               </div>
             </div>
-            <span class="status-badge status-${c.status}">${STATUS_LABELS[c.status] || c.status}</span>
+            <div class="badges">
+              <span class="source-badge source-${c.source}">${SOURCE_LABELS[c.source] || c.source}</span>
+              <span class="status-badge status-${c.status}">${STATUS_LABELS[c.status] || c.status}</span>
+            </div>
           </div>
+
+          ${c.amount ? `<div class="payment-info">💰 ${Number(c.amount).toLocaleString('tr-TR')} ${c.currency || 'TRY'} ${c.orderId ? `· Sipariş No: ${c.orderId}` : ''}</div>` : ''}
+
           <div class="case-desc">${c.description || 'Açıklama yok'}</div>
+
+          ${(c.phone || c.email) ? `<div class="contact-info">${c.phone ? `📱 ${c.phone}` : ''} ${c.email ? `✉️ ${c.email}` : ''}</div>` : ''}
+
           <div class="case-actions">
             <select id="select-${c.id}">
               ${Object.entries(STATUS_LABELS).map(([k, v]) => `<option value="${k}" ${k === c.status ? 'selected' : ''}>${v}</option>`).join('')}
             </select>
             <button onclick="updateStatus('${c.id}')">Durumu Güncelle (WhatsApp Gönder)</button>
-            <a class="wa-link" href="https://wa.me/${phoneClean}" target="_blank">💬 WhatsApp'ta Aç</a>
+            ${phoneClean ? `<a class="wa-link" href="https://wa.me/${phoneClean}" target="_blank">💬 WhatsApp'ta Aç</a>` : ''}
+            ${c.email ? `<a class="mail-link" href="mailto:${c.email}">✉️ E-posta Gönder</a>` : ''}
+            ${hasRaw ? `<button class="raw-toggle" onclick="document.getElementById('${rawId}').classList.toggle('show')">🔍 Ham Veri</button>` : ''}
           </div>
+
+          ${hasRaw ? `<div class="raw-box" id="${rawId}">${JSON.stringify(c.raw, null, 2)}</div>` : ''}
         </div>`;
       }).join('');
     }
@@ -220,7 +274,7 @@
         });
         const data = await res.json();
         if (data.success) {
-          showToast(data.notified ? '✅ Durum güncellendi, müşteriye WhatsApp gönderildi' : '✅ Durum güncellendi (mesaj gönderilemedi)');
+          showToast(data.notified ? '✅ Durum güncellendi, müşteriye WhatsApp gönderildi' : '✅ Durum güncellendi (mesaj gönderilemedi — telefon yok veya sandbox dışı)');
           loadCases();
         } else {
           showToast('❌ Hata: ' + (data.error || 'Bilinmeyen hata'));
@@ -236,10 +290,9 @@
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 3500);
+      setTimeout(() => t.classList.remove('show'), 4000);
     }
 
-    // Sayfa açılışında kayıtlı şifreyi dene
     window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('ig_admin_key');
       if (saved) {

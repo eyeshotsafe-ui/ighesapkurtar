@@ -1,13 +1,12 @@
 // /api/case-update.js — Vaka durumunu güncelle + müşteriye otomatik WhatsApp bildirimi gönder
 const { kv } = require('./_kv');
+const { sendWhatsApp } = require('./_notify');
 
 const ADMIN_KEY = process.env.ADMIN_KEY;
-const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
-const TWILIO_TOKEN = process.env.TWILIO_AUTH_TOKEN;
-const TWILIO_WHATSAPP = process.env.TWILIO_WHATSAPP_NUMBER;
 
-// Durum değiştiğinde müşteriye gönderilecek otomatik mesaj şablonları
 const STATUS_MESSAGES = {
+  odeme_alindi: (name) =>
+    `Merhaba ${name} 🎉 Ödemeniz alındı. Ekibimiz en kısa sürede hesabınızla ilgili sürece başlayacak.`,
   inceleniyor: (name) =>
     `Merhaba ${name} 👋 Hesabınızla ilgili durumu ekibimiz şu anda inceliyor. En kısa sürede bir sonraki adımı sizinle paylaşacağız.`,
   itiraz_gonderildi: (name) =>
@@ -20,22 +19,7 @@ const STATUS_MESSAGES = {
     `Merhaba ${name}, bu denemede hesabınızı kurtaramadık 😔 %50 iade süreciniz başlatılıyor ve kısa süre içinde tamamlanacak. Başka yardımcı olabileceğimiz bir konu olursa buradayız.`
 };
 
-const VALID_STATUSES = ['yeni', 'inceleniyor', 'itiraz_gonderildi', 'instagram_bekleniyor', 'kurtarildi', 'basarisiz'];
-
-async function sendWhatsApp(to, body) {
-  const twilioUrl = `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`;
-  const twilioAuth = Buffer.from(`${TWILIO_SID}:${TWILIO_TOKEN}`).toString('base64');
-
-  const res = await fetch(twilioUrl, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Basic ${twilioAuth}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({ To: to, From: TWILIO_WHATSAPP, Body: body })
-  });
-  return res.ok;
-}
+const VALID_STATUSES = ['yeni', 'odeme_alindi', 'inceleniyor', 'itiraz_gonderildi', 'instagram_bekleniyor', 'kurtarildi', 'basarisiz'];
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -66,7 +50,7 @@ module.exports = async function handler(req, res) {
     await kv('set', `case:${id}`, JSON.stringify(caseData));
 
     let notified = false;
-    if (notify !== false && STATUS_MESSAGES[status]) {
+    if (notify !== false && STATUS_MESSAGES[status] && caseData.phone) {
       const message = STATUS_MESSAGES[status](caseData.name || 'değerli müşterimiz');
       try {
         notified = await sendWhatsApp(caseData.phone, message);

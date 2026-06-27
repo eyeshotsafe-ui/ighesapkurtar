@@ -400,6 +400,7 @@
             </div>
           </div>
           <div class="form-group"><label>Durumunuzu Kısaca Anlatın <span class="req">*</span></label><textarea id="f-description" class="form-input" placeholder="Hesabınıza ne oldu? Ne zaman kapatıldı?"></textarea></div>
+          <div class="form-group"><label>WhatsApp Numaranız (opsiyonel)</label><input type="tel" id="f-contact" class="form-input" placeholder="05XX XXX XX XX — size daha hızlı ulaşabilmemiz için"></div>
           <button class="form-submit" onclick="analyzeAndRecommend()">Size Uygun Paketi Göster →</button>
         </div>
         <div class="recommendation" id="recommendation">
@@ -679,9 +680,10 @@
       const followers = parseInt(document.getElementById('f-followers').value) || 0;
       const type = document.querySelector('input[name="account-type"]:checked').value;
       const desc = document.getElementById('f-description').value.trim();
+      const contact = document.getElementById('f-contact').value.trim();
       if (!username || !followers || !desc) { alert('Lütfen tüm alanları doldurun.'); return; }
 
-      let pkg, price, features, shopierLink, cryptoLink;
+      let pkg, price, features, shopierLink, cryptoLink, pkgKey;
       const PL = {
         b: { s: 'https://www.shopier.com/ighesapkurtar/48444713', c: 'NOWPAYMENTS_LINK_BASLANGIC' },
         p: { s: 'https://www.shopier.com/ighesapkurtar/48444724', c: 'NOWPAYMENTS_LINK_PROFESYONEL' },
@@ -689,13 +691,13 @@
       };
 
       if (type === 'business' || followers >= 50000) {
-        pkg='🏆 VIP — İşletme & Büyük Hesap'; price='8.999<span class="curr">₺</span>'; shopierLink=PL.v.s; cryptoLink=PL.v.c;
+        pkg='🏆 VIP — İşletme & Büyük Hesap'; price='8.999<span class="curr">₺</span>'; shopierLink=PL.v.s; cryptoLink=PL.v.c; pkgKey='vip';
         features=['Acil müdahale ekibi','24 saat içinde sürece başlangıç','Kişisel hesap yöneticisi','Reklam hesabı koruması','30 gün sonrası destek','Başarısız olursa %50 iade'];
       } else if (followers >= 10000) {
-        pkg='⭐ Profesyonel — Orta-Büyük Hesap'; price='5.999<span class="curr">₺</span>'; shopierLink=PL.p.s; cryptoLink=PL.p.c;
+        pkg='⭐ Profesyonel — Orta-Büyük Hesap'; price='5.999<span class="curr">₺</span>'; shopierLink=PL.p.s; cryptoLink=PL.p.c; pkgKey='profesyonel';
         features=['Öncelikli işlem sırası','3-7 gün içinde sonuç*','Birebir canlı destek','Hesap güvenlik danışmanlığı','Başarısız olursa %50 iade'];
       } else {
-        pkg='📋 Başlangıç — Kişisel Hesap'; price='3.999<span class="curr">₺</span>'; shopierLink=PL.b.s; cryptoLink=PL.b.c;
+        pkg='📋 Başlangıç — Kişisel Hesap'; price='3.999<span class="curr">₺</span>'; shopierLink=PL.b.s; cryptoLink=PL.b.c; pkgKey='baslangic';
         features=['Ücretsiz durum analizi','3-7 gün içinde sonuç*','Anlık bilgilendirme','Başarısız olursa %50 iade'];
       }
 
@@ -707,6 +709,13 @@
       const rec=document.getElementById('recommendation');
       rec.classList.add('show');
       rec.scrollIntoView({behavior:'smooth',block:'center'});
+
+      // Vakayı arka planda kaydet (admin panelinde görünmesi için)
+      fetch('/api/form-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, followers, type, description: desc, package: pkgKey, contact: contact || null })
+      }).catch(() => {});
     }
 
     // ═══ AI CHATBOT ═══
