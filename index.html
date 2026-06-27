@@ -668,6 +668,15 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, followers, type, description: desc, package: pkgKey, contact: contact || null })
       }).catch(() => {});
+
+      // Google Ads dönüşüm takibi — Potansiyel müşteri formu gönderimi
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18277851003/-Ee0CIWl3cYcEPu-x4tE',
+          'value': 1.0,
+          'currency': 'TRY'
+        });
+      }
     }
 
     // ═══ AI CHATBOT ═══
