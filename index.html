@@ -642,10 +642,10 @@
         v: { s: 'https://www.shopier.com/ighesapkurtar/48444736', c: 'NOWPAYMENTS_LINK_VIP' }
       };
 
-      if (type === 'business' || followers >= 50000) {
+      if (followers >= 50000 && type === 'business') {
         pkg='🏆 VIP — İşletme & Büyük Hesap'; price='8.999<span class="curr">₺</span>'; shopierLink=PL.v.s; cryptoLink=PL.v.c; pkgKey='vip';
         features=['Acil müdahale ekibi','24 saat içinde sürece başlangıç','Kişisel hesap yöneticisi','Reklam hesabı koruması','30 gün sonrası destek','Başarısız olursa %50 iade'];
-      } else if (followers >= 10000) {
+      } else if (followers >= 10000 || type === 'business') {
         pkg='⭐ Profesyonel — Orta-Büyük Hesap'; price='5.999<span class="curr">₺</span>'; shopierLink=PL.p.s; cryptoLink=PL.p.c; pkgKey='profesyonel';
         features=['Öncelikli işlem sırası','3-7 gün içinde sonuç*','Birebir canlı destek','Hesap güvenlik danışmanlığı','Başarısız olursa %50 iade'];
       } else {
