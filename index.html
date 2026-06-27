@@ -234,21 +234,6 @@
     .chat-toggle{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--primary);color:var(--white);border:none;cursor:pointer;font-size:24px;box-shadow:0 4px 20px rgba(29,78,216,0.35);transition:transform .2s;display:flex;align-items:center;justify-content:center}
     .chat-toggle:hover{transform:scale(1.08)}
     .chat-toggle .badge{position:absolute;top:-1px;right:-1px;width:14px;height:14px;background:var(--green);border-radius:50%;border:2px solid var(--white)}
-
-    /* SOCIAL PROOF TOAST */
-    .social-toast{position:fixed;bottom:24px;left:24px;z-index:997;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:14px 16px;display:none;align-items:center;gap:12px;max-width:300px;animation:toastSlideIn .4s ease}
-    .social-toast.show{display:flex}
-    .social-toast.hide{animation:toastSlideOut .3s ease forwards}
-    @keyframes toastSlideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-    @keyframes toastSlideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-20px)}}
-    .toast-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
-    .toast-text{flex:1;min-width:0}
-    .toast-name{font-size:13px;font-weight:700;color:var(--text)}
-    .toast-action{font-size:12px;color:var(--text-muted);line-height:1.4}
-    .toast-time{font-size:11px;color:var(--text-light);margin-top:2px;display:flex;align-items:center;gap:4px}
-    .toast-time::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block}
-    .toast-close{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:14px;padding:2px;flex-shrink:0;align-self:flex-start}
-    .toast-close:hover{color:var(--text)}
     .chat-window{position:fixed;bottom:96px;right:24px;z-index:998;width:380px;max-height:520px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);display:none;flex-direction:column;box-shadow:var(--shadow-lg);overflow:hidden}
     .chat-window.open{display:flex}
     .chat-header{padding:16px 20px;background:var(--primary);display:flex;align-items:center;gap:12px}
@@ -296,7 +281,6 @@
       .trust-bar{gap:20px}
       .chat-window{right:8px;left:8px;width:auto;bottom:88px}
       .cta-box{padding:40px 24px}
-      .social-toast{left:8px;right:8px;max-width:none;bottom:88px}
     }
   </style>
 </head>
@@ -597,17 +581,6 @@
     </div>
   </footer>
 
-  <!-- SOCIAL PROOF TOAST -->
-  <div class="social-toast" id="socialToast">
-    <div class="toast-avatar" id="toastAvatar">AY</div>
-    <div class="toast-text">
-      <div class="toast-name" id="toastName">Ahmet K.</div>
-      <div class="toast-action" id="toastAction">başvuru formunu doldurdu</div>
-      <div class="toast-time" id="toastTime">3 dakika önce</div>
-    </div>
-    <button class="toast-close" onclick="dismissToast()">✕</button>
-  </div>
-
   <!-- CHATBOT -->
   <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬<span class="badge"></span></button>
   <div class="chat-window" id="chatWindow">
@@ -633,55 +606,6 @@
 
   <script>
     // ═══ SOCIAL PROOF TOAST ═══
-    const socialProofData = [
-      { initials: 'AY', name: 'Ahmet Y.', action: 'başvuru formunu doldurdu', time: '3 dakika önce' },
-      { initials: 'SK', name: 'Selin K.', action: 'profesyonel paketi seçti', time: '7 dakika önce' },
-      { initials: 'MÇ', name: 'Mert Ç.', action: 'hesabı için destek aldı', time: '12 dakika önce' },
-      { initials: 'ZA', name: 'Zeynep A.', action: 'başvuru formunu doldurdu', time: '18 dakika önce' },
-      { initials: 'BD', name: 'Burak D.', action: 'VIP paketi ile başvurdu', time: '24 dakika önce' },
-      { initials: 'EÖ', name: 'Elif Ö.', action: 'canlı destek ile görüştü', time: '31 dakika önce' },
-      { initials: 'CK', name: 'Cem K.', action: 'hesabını kurtarmaya başladı', time: '42 dakika önce' },
-      { initials: 'NT', name: 'Nazlı T.', action: 'başlangıç paketini seçti', time: '1 saat önce' }
-    ];
-
-    let toastIndex = 0;
-    let toastDismissedManually = false;
-    let toastInterval;
-
-    function showToast() {
-      if (toastDismissedManually) return;
-      const data = socialProofData[toastIndex % socialProofData.length];
-      toastIndex++;
-
-      const toast = document.getElementById('socialToast');
-      document.getElementById('toastAvatar').textContent = data.initials;
-      document.getElementById('toastName').textContent = data.name;
-      document.getElementById('toastAction').textContent = data.action;
-      document.getElementById('toastTime').textContent = data.time;
-
-      toast.classList.remove('hide');
-      toast.classList.add('show');
-
-      setTimeout(() => {
-        toast.classList.add('hide');
-        setTimeout(() => toast.classList.remove('show', 'hide'), 300);
-      }, 5000);
-    }
-
-    function dismissToast() {
-      const toast = document.getElementById('socialToast');
-      toast.classList.add('hide');
-      setTimeout(() => toast.classList.remove('show', 'hide'), 300);
-      toastDismissedManually = true;
-      clearInterval(toastInterval);
-    }
-
-    // İlk bildirim 4 saniye sonra, sonra her 14 saniyede bir
-    setTimeout(() => {
-      showToast();
-      toastInterval = setInterval(showToast, 14000);
-    }, 4000);
-
     // ═══ SCROLL ANIMATIONS ═══
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
