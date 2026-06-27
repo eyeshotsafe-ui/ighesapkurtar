@@ -121,7 +121,11 @@ module.exports = async function handler(req, res) {
       })
     });
 
+    console.log('[WhatsApp] Anthropic status:', aiResponse.status);
+    console.log('[WhatsApp] API Key var mı:', !!ANTHROPIC_KEY, 'uzunluk:', ANTHROPIC_KEY?.length);
+
     const aiData = await aiResponse.json();
+    console.log('[WhatsApp] Anthropic response:', JSON.stringify(aiData).substring(0, 500));
 
     if (!aiResponse.ok) {
       console.error('[WhatsApp] Anthropic API hatası:', aiResponse.status, JSON.stringify(aiData));
