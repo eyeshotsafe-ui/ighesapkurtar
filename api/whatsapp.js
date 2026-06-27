@@ -1,11 +1,12 @@
-// /api/whatsapp.js — WhatsApp AI Asistan (Twilio + Claude)
+// /api/whatsapp.js — WhatsApp AI Asistan (Twilio + Claude + Vaka Takip Sistemi)
+const { kv } = require('./_kv');
+
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_TOKEN = process.env.TWILIO_AUTH_TOKEN;
 const TWILIO_WHATSAPP = process.env.TWILIO_WHATSAPP_NUMBER; // format: whatsapp:+1234567890
 
-// Basit bellek: son mesajları tut (serverless restart'larda sıfırlanır)
-// Production'da Redis/KV kullanılabilir
+// Basit bellek: son mesajları tut (serverless restart'larda sıfırlanır, kalıcı veri KV'de)
 const conversations = new Map();
 
 const SYSTEM_PROMPT = `Sen "IG Hesap Kurtar" (ighesapkurtar.com) şirketinin WhatsApp üzerinden hizmet veren yapay zeka müşteri temsilcisisin.
@@ -44,7 +45,7 @@ Kapatılan, hacklenen, askıya alınan, devre dışı bırakılan Instagram hesa
 
 ## SÜREÇ
 1. Müşteriden şu bilgileri al: Instagram kullanıcı adı, yaklaşık takipçi sayısı, hesap türü (kişisel/işletme), ne olduğunu kısaca anlatan açıklama
-2. Bilgilere göre uygun paketi öner
+2. Bilgilere göre uygun paketi öner (10K altı kişisel → Başlangıç, 10K-50K → Profesyonel, 50K+ veya işletme → VIP)
 3. Ödeme linkini paylaş
 4. Ödeme onaylandıktan sonra ekibin sürece başlayacağını bildir
 
@@ -67,6 +68,19 @@ Kapatılan, hacklenen, askıya alınan, devre dışı bırakılan Instagram hesa
 
 Bilgileri aldıktan sonra uygun paketi öner ve ödeme linkini gönder.
 
+## ÇOK ÖNEMLİ — VAKA KAYDI OLUŞTURMA
+Yukarıdaki 4 bilgiyi (kullanıcı adı, takipçi sayısı, hesap türü, durum açıklaması) TAM OLARAK topladığın anda, normal yanıtının EN SONUNA, müşteriye GÖRÜNMEYECEK şekilde şu formatta gizli bir JSON bloğu ekle:
+
+<<CASE>>{"username":"kullanici_adi","followers":12345,"type":"personal","description":"kısa özet","package":"baslangic"}<</CASE>>
+
+Kurallar:
+- type değeri sadece "personal" veya "business" olabilir
+- package değeri sadece "baslangic", "profesyonel" veya "vip" olabilir (takipçi sayısı ve türe göre belirle)
+- Bu JSON bloğunu SADECE 4 bilginin TAMAMI toplandığında bir kez ekle
+- Bilgi eksikse bu bloğu HİÇ ekleme
+- Bu blok mesajının en sonunda olmalı, başka hiçbir yerde olmamalı
+- Aynı konuşmada bilgiler güncellenirse (örn. müşteri farklı bir takipçi sayısı söylerse) JSON'u güncel bilgilerle tekrar ekleyebilirsin
+
 ## KURALLAR
 - Asla şifre, kimlik bilgisi veya kişisel veri isteme
 - Hesap kurtarma dışı konularda kibarca yönlendir
@@ -77,8 +91,57 @@ Bilgileri aldıktan sonra uygun paketi öner ve ödeme linkini gönder.
 - Web sitesi: www.ighesapkurtar.com
 - E-posta: yardim@ighesapkurtar.com`;
 
+async function saveOrUpdateCase(phone, name, caseData) {
+  try {
+    const existingId = await kv('get', `phone-case:${phone}`);
+
+    if (existingId) {
+      const existing = await kv('get', `case:${existingId}`);
+      if (existing) {
+        const parsed = JSON.parse(existing);
+        const updated = {
+          ...parsed,
+          username: caseData.username || parsed.username,
+          followers: caseData.followers || parsed.followers,
+          type: caseData.type || parsed.type,
+          description: caseData.description || parsed.description,
+          package: caseData.package || parsed.package,
+          updatedAt: new Date().toISOString()
+        };
+        await kv('set', `case:${existingId}`, JSON.stringify(updated));
+        console.log(`[Case] Güncellendi: ${existingId}`);
+        return existingId;
+      }
+    }
+
+    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    const newCase = {
+      id,
+      phone,
+      name: name || 'Bilinmiyor',
+      username: caseData.username,
+      followers: caseData.followers,
+      type: caseData.type,
+      description: caseData.description,
+      package: caseData.package,
+      status: 'yeni',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    await kv('set', `case:${id}`, JSON.stringify(newCase));
+    await kv('lpush', 'cases:all', id);
+    await kv('set', `phone-case:${phone}`, id);
+
+    console.log(`[Case] Yeni vaka oluşturuldu: ${id}`);
+    return id;
+  } catch (err) {
+    console.error('[Case] Kaydetme hatası:', err.message);
+    return null;
+  }
+}
+
 module.exports = async function handler(req, res) {
-  // Twilio sends POST for incoming messages
   if (req.method !== 'POST') {
     return res.status(200).json({ status: 'WhatsApp AI Webhook aktif' });
   }
@@ -92,7 +155,6 @@ module.exports = async function handler(req, res) {
 
     console.log(`[WhatsApp] ${name || from}: ${message}`);
 
-    // Konuşma geçmişi (basit bellek — son 20 mesaj)
     const convKey = from;
     if (!conversations.has(convKey)) {
       conversations.set(convKey, []);
@@ -100,12 +162,10 @@ module.exports = async function handler(req, res) {
     const history = conversations.get(convKey);
     history.push({ role: 'user', content: message });
 
-    // Son 20 mesajı tut
     if (history.length > 20) {
       conversations.set(convKey, history.slice(-20));
     }
 
-    // Claude AI ile yanıt üret
     const aiResponse = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -121,22 +181,27 @@ module.exports = async function handler(req, res) {
       })
     });
 
-    console.log('[WhatsApp] Anthropic status:', aiResponse.status);
-    console.log('[WhatsApp] API Key var mı:', !!ANTHROPIC_KEY, 'uzunluk:', ANTHROPIC_KEY?.length);
-
     const aiData = await aiResponse.json();
-    console.log('[WhatsApp] Anthropic response:', JSON.stringify(aiData).substring(0, 500));
 
     if (!aiResponse.ok) {
       console.error('[WhatsApp] Anthropic API hatası:', aiResponse.status, JSON.stringify(aiData));
     }
 
-    const reply = aiData.content?.[0]?.text || 'Şu anda yanıt veremedim. Lütfen web sitemiz üzerinden bize ulaşın: www.ighesapkurtar.com';
+    let reply = aiData.content?.[0]?.text || 'Şu anda yanıt veremedim. Lütfen web sitemiz üzerinden bize ulaşın: www.ighesapkurtar.com';
 
-    // Yanıtı geçmişe ekle
+    const caseMatch = reply.match(/<<CASE>>([\s\S]*?)<<\/CASE>>/);
+    if (caseMatch) {
+      try {
+        const caseData = JSON.parse(caseMatch[1]);
+        await saveOrUpdateCase(from, name, caseData);
+      } catch (e) {
+        console.error('[Case] JSON parse hatası:', e.message);
+      }
+      reply = reply.replace(/<<CASE>>[\s\S]*?<<\/CASE>>/, '').trim();
+    }
+
     history.push({ role: 'assistant', content: reply });
 
-    // Twilio ile WhatsApp üzerinden yanıt gönder
     const twilioUrl = `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`;
     const twilioAuth = Buffer.from(`${TWILIO_SID}:${TWILIO_TOKEN}`).toString('base64');
 
@@ -155,7 +220,6 @@ module.exports = async function handler(req, res) {
 
     console.log(`[WhatsApp] Yanıt gönderildi: ${reply.substring(0, 100)}...`);
 
-    // Twilio'ya boş TwiML yanıt (çift mesaj göndermeyi önler)
     res.setHeader('Content-Type', 'text/xml');
     return res.status(200).send('<Response></Response>');
 
