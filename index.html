@@ -401,7 +401,7 @@
             </div>
           </div>
           <div class="form-group"><label>Durumunuzu Kısaca Anlatın <span class="req">*</span></label><textarea id="f-description" class="form-input" placeholder="Hesabınıza ne oldu? Ne zaman kapatıldı?"></textarea></div>
-          <div class="form-group"><label>WhatsApp Numaranız (opsiyonel)</label><input type="tel" id="f-contact" class="form-input" placeholder="05XX XXX XX XX — size daha hızlı ulaşabilmemiz için"></div>
+          <div class="form-group"><label>WhatsApp Numaranız <span style="color:var(--primary)">*</span></label><input type="tel" id="f-contact" class="form-input" placeholder="05XX XXX XX XX — size daha hızlı ulaşabilmemiz için" required></div>
           <button class="form-submit" onclick="analyzeAndRecommend()">Size Uygun Paketi Göster →</button>
         </div>
         <div class="recommendation" id="recommendation">
@@ -488,10 +488,6 @@
         </div>
       </div>
       <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:16px">*Süre, Instagram destek hattının cevap hızına göre değişiklik gösterebilir.</p>
-      <div class="payment-methods">
-        <div class="payment-method">💳 Shopier (Kredi/Banka Kartı)</div>
-        <div class="payment-method">₿ Kripto (BTC, ETH, USDT)</div>
-      </div>
     </div>
   </section>
 
@@ -639,6 +635,7 @@
       const desc = document.getElementById('f-description').value.trim();
       const contact = document.getElementById('f-contact').value.trim();
       if (!username || !followers || !desc) { alert('Lütfen tüm alanları doldurun.'); return; }
+      if (!contact || contact.replace(/\D/g,'').length < 10) { alert('Lütfen geçerli bir WhatsApp numarası girin — size ulaşabilmemiz için gerekli.'); return; }
 
       let pkg, price, features, shopierLink, cryptoLink, pkgKey;
       const PL = {
