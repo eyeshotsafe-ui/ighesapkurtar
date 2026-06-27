@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Hesap Kurtarma Hizmeti | Kapatılan Hesabınızı Geri Alın</title>
+  <meta name="description" content="Instagram hesabınız kapatıldı mı? Profesyonel Instagram hesap kurtarma hizmeti ile kapatılan, hacklenen veya askıya alınan Instagram hesabınızı 3-7 gün içinde geri alın. %95 başarı oranı.">
+  <meta name="keywords" content="instagram hesap kurtarma, instagram hesabım kapatıldı, kapatılan instagram hesabı açma, instagram hesap kurtarma hizmeti, instagram hesabım nasıl geri alınır, instagram ban kaldırma">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="IG Hesap Kurtar">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://www.ighesapkurtar.com">
+  <meta property="og:title" content="Instagram Hesap Kurtarma Hizmeti | IG Hesap Kurtar">
+  <meta property="og:description" content="Kapatılan, hacklenen veya askıya alınan Instagram hesabınızı profesyonel ekibimizle geri alın.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ighesapkurtar.com">
+  <meta property="og:locale" content="tr_TR">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"IG Hesap Kurtar","description":"Kapatılan, hacklenen veya askıya alınan Instagram hesaplarını kurtarma hizmeti.","url":"https://ighesapkurtar.com","areaServed":"TR","serviceType":"Instagram Hesap Kurtarma","availableLanguage":"Turkish","priceRange":"$$"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Instagram hesabım kapatıldı nasıl geri alabilirim?","acceptedAnswer":{"@type":"Answer","text":"Instagram hesabınız kapatıldıysa profesyonel hesap kurtarma hizmetimizle iletişime geçin. 3 gün - 1 hafta içinde hesabınızı geri almanız mümkündür."}},{"@type":"Question","name":"Instagram hesap kurtarma ne kadar sürer?","acceptedAnswer":{"@type":"Answer","text":"Hesap kurtarma süreci genellikle 3 gün - 1 hafta arasında tamamlanır. Süre Instagram destek hattının cevap hızına göre değişir."}},{"@type":"Question","name":"Kapatılan Instagram hesabı tekrar açılabilir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95 üzerindedir."}},{"@type":"Question","name":"Instagram hesap kurtarma ücreti ne kadar?","acceptedAnswer":{"@type":"Answer","text":"Kişisel hesaplar için 3.999₺, profesyonel hesaplar için 5.999₺, işletme/büyük hesaplar için 8.999₺."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --white:#FFFFFF;--bg:#FFFFFF;--bg-alt:#F1F5F9;--bg-warm:#F8FAFC;
+      --primary:#1D4ED8;--primary-light:#3B82F6;--primary-lighter:#DBEAFE;--primary-dark:#1E3A8A;
+      --green:#059669;--green-light:#D1FAE5;
+      --text:#0F172A;--text-body:#334155;--text-muted:#64748B;--text-light:#94A3B8;
+      --border:#E2E8F0;--border-hover:#CBD5E1;
+      --shadow-sm:0 1px 3px rgba(15,23,42,0.06);--shadow:0 4px 16px rgba(15,23,42,0.06);--shadow-lg:0 12px 40px rgba(15,23,42,0.1);
+      --radius:12px;--radius-lg:20px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+    @keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 0;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:var(--shadow)}
+    .nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:22px;font-weight:900;letter-spacing:-1px;color:var(--text);text-decoration:none}
+    .logo span{color:var(--primary)}
+    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+    .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--primary)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:10px;font-weight:600!important;transition:background .2s,transform .2s}
+    .nav-cta:hover{background:var(--primary-dark)!important;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;color:var(--text);cursor:pointer;font-size:22px;padding:8px}
+    .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;box-shadow:var(--shadow)}
+    .mobile-menu.open{display:flex;flex-direction:column;gap:12px}
+    .mobile-menu a{color:var(--text-body);text-decoration:none;font-size:15px;font-weight:500;padding:8px 0}
+
+    .container{max-width:1140px;margin:0 auto;padding:0 24px}
+    section{padding:100px 0}
+
+    /* HERO */
+    .hero{padding:140px 0 100px;background:linear-gradient(165deg,#EFF6FF 0%,#FFFFFF 40%,#F0FDF4 100%);position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(29,78,216,0.05) 0%,transparent 70%);pointer-events:none}
+    .hero-content{position:relative;z-index:1;text-align:center;max-width:720px;margin:0 auto}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-light);border:1px solid rgba(5,150,105,0.15);padding:6px 16px;border-radius:100px;font-size:13px;color:var(--green);font-weight:600;margin-bottom:28px}
+    .hero-badge .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:float 2s ease-in-out infinite}
+    .hero h1{font-size:clamp(32px,5vw,54px);font-weight:900;line-height:1.1;letter-spacing:-2px;margin-bottom:20px;color:var(--text)}
+    .hero h1 .highlight{background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero>div>p{font-size:18px;color:var(--text-body);line-height:1.7;margin-bottom:36px;max-width:540px;margin-left:auto;margin-right:auto}
+    .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer;border:none;font-family:inherit}
+    .btn-primary{background:var(--primary);color:var(--white);box-shadow:0 4px 16px rgba(29,78,216,0.2)}
+    .btn-primary:hover{background:var(--primary-dark);box-shadow:0 8px 24px rgba(29,78,216,0.3);transform:translateY(-2px)}
+    .btn-outline{background:var(--white);color:var(--text);border:1.5px solid var(--border)}
+    .btn-outline:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-lighter)}
+
+    .hero-stats{display:flex;justify-content:center;gap:48px;margin-top:56px;padding-top:36px;border-top:1px solid var(--border)}
+    .stat-item{text-align:center}
+    .stat-num{font-size:36px;font-weight:900;letter-spacing:-1.5px;color:var(--text)}
+    .stat-num .accent{color:var(--primary)}
+    .stat-label{font-size:13px;color:var(--text-muted);margin-top:2px;font-weight:500}
+
+    /* SECTION HEADERS */
+    .section-label{font-size:13px;font-weight:700;color:var(--primary);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+    .section-title{font-size:clamp(26px,3.5vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:14px;color:var(--text)}
+    .section-desc{font-size:16px;color:var(--text-muted);max-width:540px;line-height:1.7}
+    .section-header{text-align:center;margin-bottom:56px}
+    .section-header .section-desc{margin:0 auto}
+
+    /* TRUST BAR */
+    .trust-bar{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding:32px 0;border-bottom:1px solid var(--border)}
+    .trust-item{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-muted);font-weight:500}
+    .trust-icon{font-size:18px}
+
+    /* PROBLEMS */
+    .problems-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .problem-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s}
+    .problem-card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-4px)}
+    .problem-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--primary-lighter);border-radius:12px;margin-bottom:16px;font-size:22px}
+    .problem-card h3{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .problem-card p{font-size:14px;color:var(--text-muted);line-height:1.6}
+
+    /* PROCESS */
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+    .process-step{text-align:center;position:relative}
+    .step-circle{width:56px;height:56px;background:var(--primary);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin:0 auto 20px;position:relative;z-index:1}
+    .process-step h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .process-step p{font-size:14px;color:var(--text-muted);line-height:1.6}
+
+    /* FORM */
+    .form-section{padding:100px 0;background:var(--bg-alt)}
+    .form-wrapper{max-width:600px;margin:0 auto}
+    .form-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow)}
+    .form-group{margin-bottom:22px}
+    .form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text)}
+    .form-group label .req{color:#DC2626;margin-left:2px}
+    .form-input{width:100%;padding:12px 16px;background:var(--bg-warm);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:inherit;transition:border-color .2s;outline:none}
+    .form-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(29,78,216,0.1)}
+    .form-input::placeholder{color:var(--text-light)}
+    textarea.form-input{resize:vertical;min-height:100px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .radio-group{display:flex;gap:10px}
+    .radio-option{flex:1;position:relative}
+    .radio-option input{position:absolute;opacity:0;pointer-events:none}
+    .radio-label{display:block;padding:12px 16px;background:var(--bg-warm);border:1.5px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text-body)}
+    .radio-option input:checked+.radio-label{border-color:var(--primary);background:var(--primary-lighter);color:var(--primary-dark);font-weight:600}
+    .form-submit{width:100%;padding:14px;background:var(--primary);color:var(--white);border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .25s}
+    .form-submit:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(29,78,216,0.25)}
+
+    /* RECOMMENDATION */
+    .recommendation{display:none;margin-top:28px;padding:32px;background:var(--white);border:2px solid var(--green);border-radius:var(--radius-lg);text-align:center;animation:fadeSlideUp .4s ease;box-shadow:0 8px 30px rgba(5,150,105,0.1)}
+    @keyframes fadeSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .recommendation.show{display:block}
+    .rec-badge{display:inline-block;background:var(--green);color:var(--white);padding:4px 14px;border-radius:100px;font-size:12px;font-weight:700;margin-bottom:14px}
+    .rec-title{font-size:20px;font-weight:800;margin-bottom:4px;color:var(--text)}
+    .rec-price{font-size:38px;font-weight:900;letter-spacing:-1.5px;margin:10px 0 4px;color:var(--text)}
+    .rec-price .curr{font-size:18px;color:var(--text-muted)}
+    .rec-note{font-size:13px;color:var(--text-muted);margin-bottom:20px}
+    .rec-features{list-style:none;text-align:left;margin-bottom:24px;max-width:300px;margin-left:auto;margin-right:auto}
+    .rec-features li{font-size:14px;color:var(--text-body);padding:5px 0;display:flex;align-items:center;gap:8px}
+    .rec-features .ck{color:var(--green);font-weight:700}
+    .rec-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+    /* PRICING */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+    .price-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:36px;position:relative;transition:all .3s}
+    .price-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-6px)}
+    .price-card.featured{border-color:var(--primary);box-shadow:var(--shadow-lg)}
+    .price-card.featured::before{content:'En Popüler';position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--primary);color:var(--white);padding:5px 18px;border-radius:100px;font-size:12px;font-weight:700}
+    .price-tier{font-size:13px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+    .price-card h3{font-size:20px;font-weight:800;margin-bottom:4px;color:var(--text)}
+    .price-card .price-desc{font-size:14px;color:var(--text-muted);margin-bottom:20px}
+    .price-amount{font-size:38px;font-weight:900;letter-spacing:-1.5px;margin-bottom:4px;color:var(--text)}
+    .price-old{font-size:16px;color:var(--text-light);text-decoration:line-through;margin-bottom:2px}
+    .discount-badge{position:absolute;top:16px;right:16px;background:#FEF3C7;color:#92400E;font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:0.3px}
+    .discount-banner{display:inline-block;margin-top:16px;padding:10px 20px;background:#FEF3C7;border:1px solid #FCD34D;border-radius:100px;font-size:14px;color:#92400E;font-weight:500}
+    .secure-note{text-align:center;font-size:11px;color:var(--text-light);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:4px}
+    .price-amount .currency{font-size:18px;color:var(--text-muted)}
+    .price-note{font-size:12px;color:var(--text-light);margin-bottom:24px}
+    .price-features{list-style:none;margin-bottom:28px}
+    .price-features li{font-size:14px;color:var(--text-body);padding:7px 0;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+    .price-features li:last-child{border:none}
+    .check{color:var(--green);font-weight:700;font-size:16px}
+    .price-btn{width:100%;text-align:center;justify-content:center}
+    .price-btn+.price-btn{margin-top:8px}
+
+    .payment-methods{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:40px;padding:20px 32px;background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius);max-width:420px;margin-left:auto;margin-right:auto}
+    .payment-method{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text-muted);font-weight:500}
+
+    /* TESTIMONIALS */
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .testimonial-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s}
+    .testimonial-card:hover{box-shadow:var(--shadow)}
+    .testimonial-stars{color:#F59E0B;font-size:15px;margin-bottom:14px;letter-spacing:2px}
+    .testimonial-card blockquote{font-size:14px;color:var(--text-body);line-height:1.7;margin-bottom:18px;font-style:italic}
+    .testimonial-author{display:flex;align-items:center;gap:10px}
+    .author-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--white)}
+    .author-name{font-size:14px;font-weight:600;color:var(--text)}
+    .author-detail{font-size:12px;color:var(--text-light)}
+    .verified-badge{display:inline-block;font-size:10px;color:var(--green);font-weight:600;margin-left:4px}
+
+    /* BLOG */
+    .blog-grid{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+    .blog-grid::-webkit-scrollbar{height:6px}
+    .blog-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+    .blog-card{flex:0 0 280px;scroll-snap-align:start}
+    .blog-scroll-wrap{position:relative}
+    .blog-fade-right{position:absolute;top:0;right:0;bottom:8px;width:60px;background:linear-gradient(to right,transparent,var(--bg) 80%);pointer-events:none}
+    .blog-view-all{display:inline-flex;align-items:center;gap:6px;margin-top:24px;color:var(--primary);font-weight:600;font-size:14px;text-decoration:none}
+    .blog-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s}
+    .blog-card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-3px)}
+    .blog-tag{font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+    .blog-card h3{font-size:16px;font-weight:700;margin-bottom:6px}
+    .blog-card h3 a{color:var(--text);text-decoration:none;transition:color .2s}
+    .blog-card h3 a:hover{color:var(--primary)}
+    .blog-card p{font-size:13px;color:var(--text-muted);line-height:1.5}
+
+    /* FAQ */
+    .faq-list{max-width:700px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-question{width:100%;background:none;border:none;color:var(--text);padding:22px 0;font-size:16px;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;transition:color .2s}
+    .faq-question:hover{color:var(--primary)}
+    .faq-arrow{font-size:20px;transition:transform .3s;color:var(--text-light);font-weight:300}
+    .faq-item.open .faq-arrow{transform:rotate(45deg);color:var(--primary)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-answer-inner{padding:0 0 22px;font-size:14px;color:var(--text-muted);line-height:1.7}
+    .faq-item.open .faq-answer{max-height:300px}
+
+    /* CTA */
+    .cta-section{text-align:center;padding:80px 0 100px}
+    .cta-box{background:linear-gradient(135deg,#EFF6FF,#F0FDF4);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:56px 40px;max-width:600px;margin:0 auto}
+    .cta-box h2{font-size:26px;font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:var(--text)}
+    .cta-box p{font-size:15px;color:var(--text-muted);margin-bottom:28px}
+
+    /* FOOTER */
+    footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:48px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px}
+    .footer-about p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:10px}
+    .footer-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .footer-badge{font-size:12px;color:var(--text-muted);background:var(--bg-warm);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-weight:500}
+    .footer-col h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
+    .footer-col ul{list-style:none}
+    .footer-col li{margin-bottom:8px}
+    .footer-col a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+    .footer-col a:hover{color:var(--primary)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--text-light)}
+
+    /* CHATBOT */
+    .chat-toggle{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--primary);color:var(--white);border:none;cursor:pointer;font-size:24px;box-shadow:0 4px 20px rgba(29,78,216,0.35);transition:transform .2s;display:flex;align-items:center;justify-content:center}
+    .chat-toggle:hover{transform:scale(1.08)}
+    .chat-toggle .badge{position:absolute;top:-1px;right:-1px;width:14px;height:14px;background:var(--green);border-radius:50%;border:2px solid var(--white)}
+
+    /* SOCIAL PROOF TOAST */
+    .social-toast{position:fixed;bottom:24px;left:24px;z-index:997;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:14px 16px;display:none;align-items:center;gap:12px;max-width:300px;animation:toastSlideIn .4s ease}
+    .social-toast.show{display:flex}
+    .social-toast.hide{animation:toastSlideOut .3s ease forwards}
+    @keyframes toastSlideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes toastSlideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-20px)}}
+    .toast-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .toast-text{flex:1;min-width:0}
+    .toast-name{font-size:13px;font-weight:700;color:var(--text)}
+    .toast-action{font-size:12px;color:var(--text-muted);line-height:1.4}
+    .toast-time{font-size:11px;color:var(--text-light);margin-top:2px;display:flex;align-items:center;gap:4px}
+    .toast-time::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block}
+    .toast-close{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:14px;padding:2px;flex-shrink:0;align-self:flex-start}
+    .toast-close:hover{color:var(--text)}
+    .chat-window{position:fixed;bottom:96px;right:24px;z-index:998;width:380px;max-height:520px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);display:none;flex-direction:column;box-shadow:var(--shadow-lg);overflow:hidden}
+    .chat-window.open{display:flex}
+    .chat-header{padding:16px 20px;background:var(--primary);display:flex;align-items:center;gap:12px}
+    .chat-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:16px}
+    .chat-header-info h4{font-size:14px;font-weight:600;color:var(--white)}
+    .chat-header-info span{font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:4px}
+    .chat-header-info span::before{content:'';width:5px;height:5px;background:#4ADE80;border-radius:50%}
+    .chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:18px;padding:4px}
+    .chat-close:hover{color:var(--white)}
+    .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:300px;max-height:340px;background:var(--bg-warm)}
+    .chat-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;animation:fadeSlideUp .3s ease}
+    .chat-msg.bot{background:var(--white);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;color:var(--text-body);white-space:pre-line}
+    .chat-msg.user{background:var(--primary);color:var(--white);align-self:flex-end;border-bottom-right-radius:4px}
+    .quick-actions{display:flex;flex-wrap:wrap;gap:6px;padding:0 4px}
+    .quick-btn{background:var(--white);border:1px solid var(--border);border-radius:8px;color:var(--text-body);padding:8px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s;text-align:left}
+    .quick-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-lighter)}
+    .typing-dots{display:inline-flex;gap:4px;padding:4px 0}
+    .typing-dots span{width:6px;height:6px;background:var(--text-light);border-radius:50%;animation:dotPulse 1.2s infinite}
+    .typing-dots span:nth-child(2){animation-delay:.2s}
+    .typing-dots span:nth-child(3){animation-delay:.4s}
+    @keyframes dotPulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+    .chat-input-area{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;background:var(--white)}
+    .chat-input{flex:1;padding:10px 14px;background:var(--bg-warm);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit;outline:none}
+    .chat-input:focus{border-color:var(--primary)}
+    .chat-input::placeholder{color:var(--text-light)}
+    .chat-send{width:40px;height:40px;background:var(--primary);color:var(--white);border:none;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .chat-send:hover{background:var(--primary-dark)}
+    .chat-send:disabled{opacity:.4;cursor:not-allowed}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu-btn{display:block}
+      .hero{padding:110px 0 60px}
+      .hero h1{font-size:32px;letter-spacing:-1px}
+      .hero-stats{gap:20px;flex-wrap:wrap}
+      .stat-num{font-size:28px}
+      .problems-grid,.pricing-grid,.testimonials-grid{grid-template-columns:1fr}
+      .blog-card{flex:0 0 240px}
+      .process-grid{grid-template-columns:1fr;gap:24px}
+      .form-row{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr;gap:28px}
+      .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+      section{padding:64px 0}
+      .trust-bar{gap:20px}
+      .chat-window{right:8px;left:8px;width:auto;bottom:88px}
+      .cta-box{padding:40px 24px}
+      .social-toast{left:8px;right:8px;max-width:none;bottom:88px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">ig<span>hesapkurtar</span></a>
+      <ul class="nav-links">
+        <li><a href="#nasil-calisir">Nasıl Çalışır</a></li>
+        <li><a href="#basvuru">Başvuru</a></li>
+        <li><a href="#fiyatlar">Fiyatlar</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="#sss">S.S.S</a></li>
+        <li><a href="#basvuru" class="nav-cta">Hemen Başla</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menü">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#nasil-calisir" onclick="this.parentElement.classList.remove('open')">Nasıl Çalışır</a>
+      <a href="#basvuru" onclick="this.parentElement.classList.remove('open')">Başvuru</a>
+      <a href="#fiyatlar" onclick="this.parentElement.classList.remove('open')">Fiyatlar</a>
+      <a href="/blog/" onclick="this.parentElement.classList.remove('open')">Blog</a>
+      <a href="#sss" onclick="this.parentElement.classList.remove('open')">S.S.S</a>
+      <a href="#basvuru" class="btn btn-primary" style="text-align:center;margin-top:4px" onclick="this.parentElement.classList.remove('open')">Hemen Başla</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge"><span class="dot"></span> 7/24 Destek · Türkiye Geneli Hizmet</div>
+      <h1>Instagram Hesabınız mı<br><span class="highlight">Kapatıldı?</span></h1>
+      <p>Kapatılan, hacklenen veya askıya alınan Instagram hesabınızı profesyonel ekibimizle <strong>3 gün - 1 hafta</strong> içinde geri alın.</p>
+      <div class="hero-actions">
+        <a href="#basvuru" class="btn btn-primary">Ücretsiz Durum Analizi →</a>
+        <a href="#nasil-calisir" class="btn btn-outline">Nasıl Çalışır?</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat-item"><div class="stat-num">2,400<span class="accent">+</span></div><div class="stat-label">Kurtarılan Hesap</div></div>
+        <div class="stat-item"><div class="stat-num">%<span class="accent">95</span></div><div class="stat-label">Başarı Oranı</div></div>
+        <div class="stat-item"><div class="stat-num">3<span class="accent">-</span>7</div><div class="stat-label">Gün İçinde Sonuç</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar reveal">
+    <div class="trust-item"><span class="trust-icon">🛡️</span> Güvenli Süreç</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> Şifre Talep Etmiyoruz</div>
+    <div class="trust-item"><span class="trust-icon">💳</span> SSL ile Güvenli Ödeme</div>
+    <div class="trust-item"><span class="trust-icon">↩️</span> Başarısızlıkta %50 İade</div>
+    <div class="trust-item"><span class="trust-icon">⭐</span> 2.400+ Mutlu Müşteri</div>
+  </div>
+
+  <!-- PROBLEMS -->
+  <section id="sorunlar" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Çözdüğümüz Sorunlar</div>
+        <h2 class="section-title">Hangi Durumlarda Yardımcı Oluyoruz?</h2>
+        <p class="section-desc">Instagram hesabınız ne sebeple kapatılmış olursa olsun, profesyonel çözüm sunuyoruz.</p>
+      </div>
+      <div class="problems-grid">
+        <div class="problem-card"><div class="problem-icon">🚫</div><h3>Topluluk Kuralları İhlali</h3><p>Haksız kapatma kararlarına itiraz süreci yönetimi ve hesap kurtarma.</p></div>
+        <div class="problem-card"><div class="problem-icon">🔓</div><h3>Hacklenen Hesaplar</h3><p>E-posta ve şifre değiştirilmiş olsa bile hesabınızı orijinal sahibine iade ediyoruz.</p></div>
+        <div class="problem-card"><div class="problem-icon">⚠️</div><h3>Askıya Alınan Hesaplar</h3><p>Geçici veya kalıcı askıya alınan hesapları yeniden aktif hale getiriyoruz.</p></div>
+        <div class="problem-card"><div class="problem-icon">🔒</div><h3>Devre Dışı Bırakılan</h3><p>Kimlik doğrulama ve itiraz süreçlerinin profesyonel yönetimi.</p></div>
+        <div class="problem-card"><div class="problem-icon">📱</div><h3>2FA Sorunu</h3><p>İki faktörlü doğrulama nedeniyle giriş yapamadığınız hesaplara erişim sağlıyoruz.</p></div>
+        <div class="problem-card"><div class="problem-icon">🏢</div><h3>İşletme Hesabı</h3><p>İşletme ve profesyonel hesapların öncelikli kurtarma süreci.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="nasil-calisir" style="background:var(--bg-alt)">
+    <div class="container reveal">
+      <div class="section-header">
+        <div class="section-label">Süreç</div>
+        <h2 class="section-title">Nasıl Çalışır?</h2>
+        <p class="section-desc">Basit ve şeffaf bir süreçle hesabınızı geri alıyoruz.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><div class="step-circle">1</div><h3>Formu Doldurun</h3><p>Hesap adınızı, takipçi sayınızı ve sorunu kısaca anlatın. Sistem size uygun paketi otomatik önerir.</p></div>
+        <div class="process-step"><div class="step-circle">2</div><h3>Kurtarma Başlar</h3><p>Ödeme sonrası profesyonel ekibimiz Instagram ile iletişime geçerek kurtarma sürecini başlatır.</p></div>
+        <div class="process-step"><div class="step-circle">3</div><h3>Hesap Teslimi</h3><p>3 gün - 1 hafta içinde hesabınız kurtarılarak güvenli şekilde size teslim edilir.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section id="basvuru" class="form-section">
+    <div class="container reveal">
+      <div class="section-header">
+        <div class="section-label">Başvuru</div>
+        <h2 class="section-title">Hesabınızı Kurtaralım</h2>
+        <p class="section-desc">Bilgilerinizi girin, size en uygun paketi otomatik olarak önerelim.</p>
+      </div>
+      <div class="form-wrapper">
+        <div class="form-card">
+          <div class="form-group"><label>Instagram Kullanıcı Adı <span class="req">*</span></label><input type="text" id="f-username" class="form-input" placeholder="@kullaniciadi"></div>
+          <div class="form-row">
+            <div class="form-group"><label>Takipçi Sayısı <span class="req">*</span></label><input type="number" id="f-followers" class="form-input" placeholder="Yaklaşık sayı"></div>
+            <div class="form-group"><label>Hesap Türü <span class="req">*</span></label>
+              <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="account-type" value="personal" checked><span class="radio-label">👤 Kişisel</span></label>
+                <label class="radio-option"><input type="radio" name="account-type" value="business"><span class="radio-label">🏢 İşletme</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group"><label>Durumunuzu Kısaca Anlatın <span class="req">*</span></label><textarea id="f-description" class="form-input" placeholder="Hesabınıza ne oldu? Ne zaman kapatıldı?"></textarea></div>
+          <div class="form-group"><label>WhatsApp Numaranız (opsiyonel)</label><input type="tel" id="f-contact" class="form-input" placeholder="05XX XXX XX XX — size daha hızlı ulaşabilmemiz için"></div>
+          <button class="form-submit" onclick="analyzeAndRecommend()">Size Uygun Paketi Göster →</button>
+        </div>
+        <div class="recommendation" id="recommendation">
+          <div class="rec-badge" id="rec-badge">Önerilen Paket</div>
+          <div class="rec-title" id="rec-title"></div>
+          <div class="rec-price" id="rec-price"></div>
+          <div class="rec-note">Tek seferlik ödeme · Başarısız olursa %50 iade</div>
+          <ul class="rec-features" id="rec-features"></ul>
+          <div class="rec-actions">
+            <a href="#" id="rec-shopier" target="_blank" class="btn btn-primary">💳 Kartla Öde</a>
+            <span id="rec-crypto" class="btn btn-outline" style="opacity:0.5;cursor:not-allowed">₿ Kripto ile Öde — Yakında</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="fiyatlar">
+    <div class="container reveal">
+      <div class="section-header">
+        <div class="section-label">Fiyatlandırma</div>
+        <h2 class="section-title">Şeffaf ve Adil Fiyatlar</h2>
+        <p class="section-desc">Hesap türünüze göre net fiyatlar. Gizli ücret yok.</p>
+        <div class="discount-banner">🎉 Bu ay yeni başvurularda <strong>%20'ye kadar indirim</strong> uygulanıyor</div>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="discount-badge">%20 İndirim</div>
+          <div class="price-tier">Başlangıç</div>
+          <h3>Kişisel Hesap</h3>
+          <p class="price-desc">10K altı takipçili kişisel hesaplar</p>
+          <div class="price-old">4.999₺</div>
+          <div class="price-amount">3.999<span class="currency">₺</span></div>
+          <div class="price-note">Tek seferlik ödeme</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Ücretsiz durum analizi</li>
+            <li><span class="check">✓</span> 3-7 gün içinde sonuç*</li>
+            <li><span class="check">✓</span> Anlık bilgilendirme</li>
+            <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
+          </ul>
+          <a href="https://www.shopier.com/ighesapkurtar/48444713" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
+          <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
+          <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
+        </div>
+        <div class="price-card featured">
+          <div class="discount-badge">%14 İndirim</div>
+          <div class="price-tier">Profesyonel</div>
+          <h3>Orta-Büyük Hesap</h3>
+          <p class="price-desc">10K-50K takipçili hesaplar</p>
+          <div class="price-old">6.999₺</div>
+          <div class="price-amount">5.999<span class="currency">₺</span></div>
+          <div class="price-note">Tek seferlik ödeme</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Öncelikli işlem sırası</li>
+            <li><span class="check">✓</span> 3-7 gün içinde sonuç*</li>
+            <li><span class="check">✓</span> Birebir canlı destek</li>
+            <li><span class="check">✓</span> Hesap güvenlik danışmanlığı</li>
+            <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
+          </ul>
+          <a href="https://www.shopier.com/ighesapkurtar/48444724" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
+          <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
+          <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
+        </div>
+        <div class="price-card">
+          <div class="discount-badge">%10 İndirim</div>
+          <div class="price-tier">VIP</div>
+          <h3>İşletme & Büyük Hesap</h3>
+          <p class="price-desc">50K+ takipçili ve işletme hesapları</p>
+          <div class="price-old">9.999₺</div>
+          <div class="price-amount">8.999<span class="currency">₺</span></div>
+          <div class="price-note">Tek seferlik ödeme</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Acil müdahale ekibi</li>
+            <li><span class="check">✓</span> 24 saat içinde sürece başlangıç</li>
+            <li><span class="check">✓</span> Kişisel hesap yöneticisi</li>
+            <li><span class="check">✓</span> Reklam hesabı koruması</li>
+            <li><span class="check">✓</span> 30 gün sonrası destek</li>
+            <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
+          </ul>
+          <a href="https://www.shopier.com/ighesapkurtar/48444736" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
+          <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
+          <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:16px">*Süre, Instagram destek hattının cevap hızına göre değişiklik gösterebilir.</p>
+      <div class="payment-methods">
+        <div class="payment-method">💳 Shopier (Kredi/Banka Kartı)</div>
+        <div class="payment-method">₿ Kripto (BTC, ETH, USDT)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background:var(--bg-alt)">
+    <div class="container reveal">
+      <div class="section-header">
+        <div class="section-label">Müşteri Yorumları</div>
+        <h2 class="section-title">Hesabını Kurtaranlar Ne Diyor?</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"5 yıllık işletme hesabım kapatıldı. 30K takipçi, yıllarca emek... Ekip 2 gün içinde hesabımı geri aldı. Muhteşem!"</blockquote><div class="testimonial-author"><div class="author-avatar">AY</div><div><div class="author-name">Ayşe Y. <span class="verified-badge">✓ Doğrulanmış</span></div><div class="author-detail">E-ticaret İşletme Sahibi</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"Hesabım hacklendi, e-postam ve şifrem değiştirilmişti. Bu ekip 2 gün içinde hesabımı geri verdi. Teşekkürler!"</blockquote><div class="testimonial-author"><div class="author-avatar">MK</div><div><div class="author-name">Mehmet K. <span class="verified-badge">✓ Doğrulanmış</span></div><div class="author-detail">İçerik Üreticisi · 45K Takipçi</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"Şeffaf süreç, net fiyat, sonuç garanti. Dolandırıcılarla karşılaştıktan sonra bu ekibe denk geldim. Tavsiye ederim."</blockquote><div class="testimonial-author"><div class="author-avatar">SÖ</div><div><div class="author-name">Selin Ö. <span class="verified-badge">✓ Doğrulanmış</span></div><div class="author-detail">Moda Influencer · 80K Takipçi</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="container reveal">
+      <div class="section-header">
+        <div class="section-label">Blog</div>
+        <h2 class="section-title">Instagram Hesap Güvenliği Rehberi</h2>
+        <p class="section-desc">12 detaylı rehber ile Instagram hesap güvenliği ve kurtarma hakkında bilmeniz gereken her şey.</p>
+      </div>
+      <div class="blog-scroll-wrap">
+        <div class="blog-grid">
+          <article class="blog-card"><div class="blog-tag">Rehber</div><h3><a href="/blog/instagram-hesabim-kapatildi.html">Instagram Hesabım Kapatıldı: Ne Yapmalıyım?</a></h3><p>Kapatılan Instagram hesabınızı geri almak için adım adım rehber.</p></article>
+          <article class="blog-card"><div class="blog-tag">Detaylı Rehber</div><h3><a href="/blog/instagram-hesap-kurtarma.html">Instagram Hesap Kurtarma: A'dan Z'ye</a></h3><p>Profesyonel kurtarma süreci, fiyatlar ve başarı oranları.</p></article>
+          <article class="blog-card"><div class="blog-tag">Acil Rehber</div><h3><a href="/blog/instagram-hesabim-hacklendi.html">Hesabım Hacklendi: Acil Eylem Planı</a></h3><p>Hacklenen hesabınızı geri almak için dakika dakika rehber.</p></article>
+          <article class="blog-card"><div class="blog-tag">Rehber</div><h3><a href="/blog/kapatilan-instagram-hesabi-acma.html">Kapatılan Hesap Nasıl Açılır?</a></h3><p>5 farklı yöntem ve itiraz ipuçları ile hesabınızı geri açın.</p></article>
+          <article class="blog-card"><div class="blog-tag">Çözüm</div><h3><a href="/blog/instagram-ban-kaldirma.html">Instagram Ban Nasıl Kaldırılır?</a></h3><p>Geçici, kalıcı, shadow ban ve IP ban için çözüm rehberi.</p></article>
+          <article class="blog-card"><div class="blog-tag">Çözüm</div><h3><a href="/blog/instagram-askiya-alindi.html">Hesabım Askıya Alındı: Çözüm Yolları</a></h3><p>Askıya alınan hesabınızı tekrar aktif hale getirme rehberi.</p></article>
+          <article class="blog-card"><div class="blog-tag">Güvenlik</div><h3><a href="/blog/instagram-hesap-kurtarma-dolandiricilik.html">Hesap Kurtarma Dolandırıcılığı</a></h3><p>Sahte hizmetleri nasıl tespit edersiniz, güvenilir hizmet seçim kriterleri.</p></article>
+          <article class="blog-card"><div class="blog-tag">Rehber</div><h3><a href="/blog/instagram-telif-hakki-ihlali.html">Telif Hakkı İhlali ve Çözümü</a></h3><p>Copyright strike nedeniyle kapatılan hesaplar için itiraz rehberi.</p></article>
+          <article class="blog-card"><div class="blog-tag">Teknik</div><h3><a href="/blog/instagram-2fa-sorunu.html">İki Faktörlü Doğrulama Sorunu</a></h3><p>2FA kodu gelmiyor mu? Giriş yapamama sorununun çözümü.</p></article>
+          <article class="blog-card"><div class="blog-tag">İşletmeler</div><h3><a href="/blog/instagram-isletme-hesabi-kapatildi.html">İşletme Hesabı Kapatıldı</a></h3><p>Markanız için acil çözüm rehberi ve öncelikli adımlar.</p></article>
+          <article class="blog-card"><div class="blog-tag">Çözüm</div><h3><a href="/blog/instagram-spam-hesabi-kapatildi.html">Spam Şüphesiyle Kapatılan Hesaplar</a></h3><p>Bot şüphesi nedeniyle kapatılan hesaplar için çözüm rehberi.</p></article>
+          <article class="blog-card"><div class="blog-tag">Kapsamlı</div><h3><a href="/blog/instagram-hesap-neden-kapatilir.html">En Yaygın 10 Kapatma Sebebi</a></h3><p>Hesabınızın neden kapatıldığını öğrenin ve doğru rehbere ulaşın.</p></article>
+        </div>
+        <div class="blog-fade-right"></div>
+      </div>
+      <a href="/blog/" class="blog-view-all">Tüm Blog Yazılarını Gör →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="sss" style="background:var(--bg-alt)">
+    <div class="container reveal">
+      <div class="section-header">
+        <div class="section-label">S.S.S</div>
+        <h2 class="section-title">Sık Sorulan Sorular</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesabım kapatıldı nasıl geri alabilirim?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Hesabınız kapatıldığında profesyonel hesap kurtarma hizmetimizle iletişime geçin. Kapatılma sebebini analiz ediyoruz ve genellikle 3 gün - 1 hafta içinde hesabınızı geri almanız mümkündür.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesap kurtarma ne kadar sürer?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Süreç genellikle 3-7 gün içinde tamamlanır. Instagram destek hattının cevap hızına göre değişebilir. VIP paketimizde 24 saat içinde sürece başlanır.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Hesap kurtarma güvenli mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet. Hesap şifrenizi veya kişisel bilgilerinizi asla talep etmiyoruz. Instagram'ın resmi kanalları üzerinden yasal çerçevede çalışıyoruz.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Ödeme yöntemleriniz nelerdir?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Kredi kartı ve banka kartı ile güvenli ödeme (Shopier altyapısı) ve kripto para ile ödeme (Bitcoin, Ethereum, USDT) seçenekleri sunuyoruz.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Başarısız olursa param iade edilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, %50 iade garantisi sunuyoruz. Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin %50'sini iade ediyoruz. Bu garanti tüm paketlerimiz için geçerlidir.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="iletisim">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2>Hesabınızı Geri Almaya Hazır mısınız?</h2>
+        <p>Formu doldurun veya canlı destek ile 7/24 yardım alın.</p>
+        <div class="hero-actions">
+          <a href="#basvuru" class="btn btn-primary">📋 Formu Doldur</a>
+          <a href="https://wa.me/14155238886?text=join%20rocket-pilot" target="_blank" class="btn btn-outline" style="background:#25D366;color:#fff;border-color:#25D366">💬 Ekibimizle WhatsApp Üzerinden İletişime Geç</a>
+          <a href="mailto:yardim@ighesapkurtar.com" class="btn btn-outline">✉️ E-posta Gönder</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><a href="#" class="logo">ig<span>hesapkurtar</span></a><p>Türkiye'nin güvenilir Instagram hesap kurtarma hizmeti. Kapatılan, hacklenen veya askıya alınan hesaplarınızı profesyonel ekibimizle geri alın.</p>
+          <div class="footer-badges">
+            <span class="footer-badge">🔒 SSL Korumalı</span>
+            <span class="footer-badge">✓ %50 İade Garantisi</span>
+            <span class="footer-badge">⭐ 2.400+ Müşteri</span>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Hizmetler</h4><ul><li><a href="#">Instagram Hesap Kurtarma</a></li><li><a href="#">Hacklenen Hesap Kurtarma</a></li><li><a href="#">İşletme Hesabı Kurtarma</a></li><li><a href="#">Instagram Ban Kaldırma</a></li></ul></div>
+        <div class="footer-col"><h4>Bilgi</h4><ul><li><a href="#nasil-calisir">Nasıl Çalışır</a></li><li><a href="#fiyatlar">Fiyatlar</a></li><li><a href="#sss">S.S.S</a></li><li><a href="#blog">Blog</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 IG Hesap Kurtar. Tüm hakları saklıdır.</span><span>yardim@ighesapkurtar.com</span></div>
+    </div>
+  </footer>
+
+  <!-- SOCIAL PROOF TOAST -->
+  <div class="social-toast" id="socialToast">
+    <div class="toast-avatar" id="toastAvatar">AY</div>
+    <div class="toast-text">
+      <div class="toast-name" id="toastName">Ahmet K.</div>
+      <div class="toast-action" id="toastAction">başvuru formunu doldurdu</div>
+      <div class="toast-time" id="toastTime">3 dakika önce</div>
+    </div>
+    <button class="toast-close" onclick="dismissToast()">✕</button>
+  </div>
+
+  <!-- CHATBOT -->
+  <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬<span class="badge"></span></button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-avatar">🤖</div>
+      <div class="chat-header-info"><h4>Hesap Kurtarma Asistanı</h4><span>AI Destekli · Çevrimiçi</span></div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Merhaba! 👋 Instagram hesabınızla ilgili size yardımcı olabilirim. Sorununuzu anlatabilir veya aşağıdaki konulardan birini seçebilirsiniz.</div>
+      <div class="quick-actions" id="quickActions">
+        <button class="quick-btn" onclick="quickAsk('Hesabım kapatıldı, ne yapmalıyım?')">🚫 Hesabım kapatıldı</button>
+        <button class="quick-btn" onclick="quickAsk('Hesabım hacklendi, acil yardım lazım')">🔓 Hesabım hacklendi</button>
+        <button class="quick-btn" onclick="quickAsk('Fiyatlarınız nedir?')">💰 Fiyatlar</button>
+        <button class="quick-btn" onclick="quickAsk('Kurtarma süreci nasıl işliyor?')">⚙️ Nasıl çalışır?</button>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Sorununuzu anlatın..." onkeydown="if(event.key==='Enter'&&!event.shiftKey)sendChat()">
+      <button class="chat-send" id="chatSend" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    // ═══ SOCIAL PROOF TOAST ═══
+    const socialProofData = [
+      { initials: 'AY', name: 'Ahmet Y.', action: 'başvuru formunu doldurdu', time: '3 dakika önce' },
+      { initials: 'SK', name: 'Selin K.', action: 'profesyonel paketi seçti', time: '7 dakika önce' },
+      { initials: 'MÇ', name: 'Mert Ç.', action: 'hesabı için destek aldı', time: '12 dakika önce' },
+      { initials: 'ZA', name: 'Zeynep A.', action: 'başvuru formunu doldurdu', time: '18 dakika önce' },
+      { initials: 'BD', name: 'Burak D.', action: 'VIP paketi ile başvurdu', time: '24 dakika önce' },
+      { initials: 'EÖ', name: 'Elif Ö.', action: 'canlı destek ile görüştü', time: '31 dakika önce' },
+      { initials: 'CK', name: 'Cem K.', action: 'hesabını kurtarmaya başladı', time: '42 dakika önce' },
+      { initials: 'NT', name: 'Nazlı T.', action: 'başlangıç paketini seçti', time: '1 saat önce' }
+    ];
+
+    let toastIndex = 0;
+    let toastDismissedManually = false;
+    let toastInterval;
+
+    function showToast() {
+      if (toastDismissedManually) return;
+      const data = socialProofData[toastIndex % socialProofData.length];
+      toastIndex++;
+
+      const toast = document.getElementById('socialToast');
+      document.getElementById('toastAvatar').textContent = data.initials;
+      document.getElementById('toastName').textContent = data.name;
+      document.getElementById('toastAction').textContent = data.action;
+      document.getElementById('toastTime').textContent = data.time;
+
+      toast.classList.remove('hide');
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => toast.classList.remove('show', 'hide'), 300);
+      }, 5000);
+    }
+
+    function dismissToast() {
+      const toast = document.getElementById('socialToast');
+      toast.classList.add('hide');
+      setTimeout(() => toast.classList.remove('show', 'hide'), 300);
+      toastDismissedManually = true;
+      clearInterval(toastInterval);
+    }
+
+    // İlk bildirim 4 saniye sonra, sonra her 14 saniyede bir
+    setTimeout(() => {
+      showToast();
+      toastInterval = setInterval(showToast, 14000);
+    }, 4000);
+
+    // ═══ SCROLL ANIMATIONS ═══
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }});
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ═══ FORM LOGIC ═══
+    function analyzeAndRecommend() {
+      const username = document.getElementById('f-username').value.trim();
+      const followers = parseInt(document.getElementById('f-followers').value) || 0;
+      const type = document.querySelector('input[name="account-type"]:checked').value;
+      const desc = document.getElementById('f-description').value.trim();
+      const contact = document.getElementById('f-contact').value.trim();
+      if (!username || !followers || !desc) { alert('Lütfen tüm alanları doldurun.'); return; }
+
+      let pkg, price, features, shopierLink, cryptoLink, pkgKey;
+      const PL = {
+        b: { s: 'https://www.shopier.com/ighesapkurtar/48444713', c: 'NOWPAYMENTS_LINK_BASLANGIC' },
+        p: { s: 'https://www.shopier.com/ighesapkurtar/48444724', c: 'NOWPAYMENTS_LINK_PROFESYONEL' },
+        v: { s: 'https://www.shopier.com/ighesapkurtar/48444736', c: 'NOWPAYMENTS_LINK_VIP' }
+      };
+
+      if (type === 'business' || followers >= 50000) {
+        pkg='🏆 VIP — İşletme & Büyük Hesap'; price='8.999<span class="curr">₺</span>'; shopierLink=PL.v.s; cryptoLink=PL.v.c; pkgKey='vip';
+        features=['Acil müdahale ekibi','24 saat içinde sürece başlangıç','Kişisel hesap yöneticisi','Reklam hesabı koruması','30 gün sonrası destek','Başarısız olursa %50 iade'];
+      } else if (followers >= 10000) {
+        pkg='⭐ Profesyonel — Orta-Büyük Hesap'; price='5.999<span class="curr">₺</span>'; shopierLink=PL.p.s; cryptoLink=PL.p.c; pkgKey='profesyonel';
+        features=['Öncelikli işlem sırası','3-7 gün içinde sonuç*','Birebir canlı destek','Hesap güvenlik danışmanlığı','Başarısız olursa %50 iade'];
+      } else {
+        pkg='📋 Başlangıç — Kişisel Hesap'; price='3.999<span class="curr">₺</span>'; shopierLink=PL.b.s; cryptoLink=PL.b.c; pkgKey='baslangic';
+        features=['Ücretsiz durum analizi','3-7 gün içinde sonuç*','Anlık bilgilendirme','Başarısız olursa %50 iade'];
+      }
+
+      document.getElementById('rec-title').textContent=pkg;
+      document.getElementById('rec-price').innerHTML=price;
+      document.getElementById('rec-shopier').href=shopierLink;
+      document.getElementById('rec-crypto').href=cryptoLink;
+      document.getElementById('rec-features').innerHTML=features.map(f=>`<li><span class="ck">✓</span> ${f}</li>`).join('');
+      const rec=document.getElementById('recommendation');
+      rec.classList.add('show');
+      rec.scrollIntoView({behavior:'smooth',block:'center'});
+
+      // Vakayı arka planda kaydet (admin panelinde görünmesi için)
+      fetch('/api/form-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, followers, type, description: desc, package: pkgKey, contact: contact || null })
+      }).catch(() => {});
+    }
+
+    // ═══ AI CHATBOT ═══
+    function toggleChat(){const w=document.getElementById('chatWindow');w.classList.toggle('open');if(w.classList.contains('open'))document.getElementById('chatInput').focus()}
+    function quickAsk(q){document.getElementById('chatInput').value=q;const qa=document.getElementById('quickActions');if(qa)qa.remove();sendChat()}
+
+    const SYS=`Sen "IG Hesap Kurtar" (ighesapkurtar.com) şirketinin AI destekli müşteri destek asistanısın.
+
+## KURALLAR
+- Samimi, güven veren, profesyonel ama sıcak üslup. Türkçe konuş.
+- Kısa ve öz cevaplar ver (maks 3-4 cümle). Emojileri ölçülü kullan.
+- Asla şifre/kişisel bilgi isteme. Hesap kurtarma dışı konularda kibarca yönlendir.
+- Müşteriyi sitedeki başvuru formunu doldurmaya teşvik et.
+
+## HİZMET BİLGİLERİ
+- Kapatılan, hacklenen, askıya alınan, ban yiyen Instagram hesaplarını kurtarıyoruz
+- 2.400+ başarılı kurtarma, %95+ başarı oranı, 3-7 gün sonuç
+- Fiyatlar: Başlangıç 3.999₺ (10K altı), Profesyonel 5.999₺ (10K-50K), VIP 8.999₺ (50K+/işletme)
+- Ödeme: Shopier (kredi kartı) + Kripto (BTC, ETH, USDT)
+- Başarısız olursa %50 iade garantisi
+- Şifre talep etmiyoruz, Instagram resmi kanallarından çalışıyoruz
+- E-posta: yardim@ighesapkurtar.com`;
+
+    let chatHistory=[];let isProcessing=false;
+
+    async function sendChat(){
+      if(isProcessing)return;const input=document.getElementById('chatInput');const msg=input.value.trim();if(!msg)return;
+      isProcessing=true;addMessage(msg,'user');input.value='';document.getElementById('chatSend').disabled=true;
+      const typingEl=document.createElement('div');typingEl.className='chat-msg bot';typingEl.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';
+      document.getElementById('chatMessages').appendChild(typingEl);scrollChat();
+      chatHistory.push({role:'user',content:msg});if(chatHistory.length>16)chatHistory=chatHistory.slice(-16);
+      let reply='';
+      try{
+        const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:400,system:SYS,messages:chatHistory})});
+        if(!res.ok)throw new Error(res.status);const data=await res.json();reply=data.content?.map(b=>b.text||'').join('')||'';if(!reply)throw new Error('empty');
+      }catch(e){reply=smartFallback(msg)}
+      typingEl.remove();chatHistory.push({role:'assistant',content:reply});await typeMessage(reply);showContextualActions(msg);
+      document.getElementById('chatSend').disabled=false;isProcessing=false;document.getElementById('chatInput').focus();
+    }
+
+    async function typeMessage(text){const c=document.getElementById('chatMessages');const d=document.createElement('div');d.className='chat-msg bot';c.appendChild(d);const w=text.split(' ');let cur='';for(let i=0;i<w.length;i++){cur+=(i>0?' ':'')+w[i];d.textContent=cur;scrollChat();await new Promise(r=>setTimeout(r,20+Math.random()*15))}}
+    function scrollChat(){const c=document.getElementById('chatMessages');c.scrollTop=c.scrollHeight}
+
+    function showContextualActions(msg){
+      const m=msg.toLowerCase();const c=document.getElementById('chatMessages');let acts=[];
+      if(/fiyat|ücret|kaç|para/.test(m))acts=[['⚙️ Nasıl çalışır?','Kurtarma süreci nasıl işliyor?'],['📋 Başvuru yap','Başvuru yapmak istiyorum']];
+      else if(/hack|kapatıl|ban|askıya/.test(m))acts=[['💰 Fiyat öğren','Bu durum için fiyat ne kadar?'],['📋 Başvuru yap','Başvuru yapmak istiyorum']];
+      else if(/nasıl|süreç/.test(m))acts=[['💰 Fiyatlar','Fiyatlarınız nedir?'],['📋 Hemen başla','Başvuru yapmak istiyorum']];
+      if(acts.length){const ad=document.createElement('div');ad.className='quick-actions';acts.forEach(([l,q])=>{const b=document.createElement('button');b.className='quick-btn';b.textContent=l;b.onclick=()=>{ad.remove();quickAsk(q)};ad.appendChild(b)});c.appendChild(ad);scrollChat()}
+    }
+
+    function smartFallback(msg){
+      const m=msg.toLowerCase().replace(/[ıİ]/g,'i').replace(/[şŞ]/g,'s').replace(/[çÇ]/g,'c').replace(/[ğĞ]/g,'g').replace(/[üÜ]/g,'u').replace(/[öÖ]/g,'o');
+      if(/^(merhaba|selam|hey|naber)/.test(m))return'Merhaba! 😊 Instagram hesabınızla ilgili size nasıl yardımcı olabilirim?';
+      if(/fiyat|ucret|kac|para|ne kadar/.test(m))return'Fiyatlarımız:\n\n📋 Başlangıç: 3.999₺ (10K altı)\n⭐ Profesyonel: 5.999₺ (10K-50K)\n🏆 VIP: 8.999₺ (50K+ / İşletme)\n\nBaşarısız olursa %50 iade garantisi var.';
+      if(/sure|zaman|kac gun|kac saat/.test(m))return'Kurtarma süreci genellikle 3 gün - 1 hafta içinde tamamlanır. VIP paketimizde 24 saat içinde başlanır.';
+      if(/odeme|kart|kripto|bitcoin/.test(m))return'💳 Kredi/Banka Kartı (Shopier)\n₿ Kripto (BTC, ETH, USDT)\n\nÖdeme sonrası ekibimiz hemen başlar.';
+      if(/iade|garanti|basarisiz/.test(m))return'Tüm paketlerde %50 iade garantisi var. Kurtaramazsak ödemenizin %50\'sini iade ediyoruz.';
+      if(/guvenli|dolandir|sifre/.test(m))return'Şifrenizi asla istemiyoruz. Instagram resmi kanallarından yasal çerçevede çalışıyoruz. 2.400+ başarılı kurtarma geçmişimiz var. 🛡️';
+      if(/hack|calın|ele gecir/.test(m))return'Hacklenen hesapları kurtarmada uzmanız. E-posta/şifre değişmiş olsa bile çözüm sunuyoruz. Formu doldurup durumunuzu anlatın! 👆';
+      if(/kapatil|kapandi|ban|askiya/.test(m))return'Kapatılan ve ban yiyen hesaplarda 2.400+ başarılı işlem. Formu doldurarak ücretsiz analiz alabilirsiniz! 👆';
+      if(/nasil|surec|adim/.test(m))return'1️⃣ Formu doldurun\n2️⃣ Sistem uygun paketi önerir\n3️⃣ Ödeme sonrası ekibimiz başlar\n4️⃣ 3 gün - 1 haftada hesap teslim\n\nHemen formu doldurun! ☝️';
+      if(/basvur|form|basla|istiyorum/.test(m))return'Harika! Sayfadaki Başvuru bölümüne gidip formu doldurun — sistem size otomatik paket önerecek. ☝️';
+      if(/tesekkur|sagol|tamam/.test(m))return'Rica ederim! 😊 Başka sorunuz olursa yazın.';
+      return'Instagram hesap kurtarma hakkında yardımcı olabilirim — fiyatlar, süreç veya başka bir konuda soru sorabilirsiniz. Ya da hemen formu doldurun! 😊';
+    }
+
+    function addMessage(text,cls){const c=document.getElementById('chatMessages');const d=document.createElement('div');d.className='chat-msg '+cls;d.textContent=text;c.appendChild(d);scrollChat();return d}
+  </script>
+</body>
+</html>
