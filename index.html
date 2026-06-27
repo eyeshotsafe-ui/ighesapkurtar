@@ -223,6 +223,9 @@
     /* CTA */
     .cta-section{text-align:center;padding:80px 0 100px}
     .cta-box{background:linear-gradient(135deg,#FDF0F5,#FFF7ED);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:56px 40px;max-width:600px;margin:0 auto}
+    .quick-callback{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);text-align:center}
+    .quick-callback-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .quick-callback-row .form-input{width:auto}
     .cta-box h2{font-size:26px;font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;color:var(--text)}
     .cta-box p{font-size:15px;color:var(--text-muted);margin-bottom:28px}
 
@@ -569,9 +572,19 @@
         <p>Formu doldurun, ekibimiz WhatsApp üzerinden size ulaşsın.</p>
         <div class="hero-actions">
           <a href="#basvuru" class="btn btn-primary">📋 Formu Doldur</a>
-          <a href="mailto:yardim@ighesapkurtar.com" class="btn btn-outline">✉️ E-posta Gönder</a>
         </div>
-        <p style="font-size:13px;color:var(--text-light);margin-top:18px">📱 Ekibimiz, formda belirttiğiniz WhatsApp numarasından kısa süre içinde sizinle iletişime geçecektir.</p>
+
+        <div class="quick-callback">
+          <span style="font-size:13px;color:var(--text-light);font-weight:600">— veya —</span>
+          <p style="font-size:15px;font-weight:700;color:var(--text);margin:8px 0 12px">Numaranızı bırakın, sizi arayalım</p>
+          <div class="quick-callback-row">
+            <input type="tel" id="cb-phone" class="form-input" placeholder="05XX XXX XX XX" style="flex:1;max-width:240px">
+            <button class="btn btn-primary" onclick="requestCallback()" id="cb-btn" style="white-space:nowrap">📞 Beni Arayın</button>
+          </div>
+          <p style="font-size:11px;color:var(--text-light);margin-top:10px">Numaranızı bırakarak <a href="/kvkk.html" target="_blank" style="color:var(--primary)">KVKK Aydınlatma Metni</a>'ni kabul etmiş olursunuz.</p>
+        </div>
+
+        <p style="font-size:13px;color:var(--text-light);margin-top:22px">📱 Bıraktığınız numaradan WhatsApp veya telefon üzerinden kısa süre içinde sizinle iletişime geçeceğiz.</p>
       </div>
     </div>
   </section>
@@ -630,6 +643,39 @@
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
     });
+
+    // ═══ HIZLI ARAMA TALEBİ (CTA bölümü) ═══
+    function requestCallback() {
+      const input = document.getElementById('cb-phone');
+      const btn = document.getElementById('cb-btn');
+      const phone = input.value.trim();
+      if (!phone || phone.replace(/\D/g,'').length < 10) {
+        alert('Lütfen geçerli bir telefon numarası girin.');
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = '...';
+      fetch('/api/form-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: 'Belirtilmedi',
+          followers: 0,
+          type: 'callback',
+          description: 'Hızlı arama talebi (CTA bölümü)',
+          package: null,
+          contact: phone,
+          kvkkOnay: true
+        })
+      }).then(() => {
+        btn.textContent = '✓ Alındı, teşekkürler!';
+        input.disabled = true;
+      }).catch(() => {
+        btn.disabled = false;
+        btn.textContent = '📞 Beni Arayın';
+        alert('Bir hata oluştu, lütfen tekrar deneyin.');
+      });
+    }
 
     // ═══ FORM LOGIC ═══
     function analyzeAndRecommend() {
