@@ -402,7 +402,14 @@
           </div>
           <div class="form-group"><label>Durumunuzu Kısaca Anlatın <span class="req">*</span></label><textarea id="f-description" class="form-input" placeholder="Hesabınıza ne oldu? Ne zaman kapatıldı?"></textarea></div>
           <div class="form-group"><label>WhatsApp Numaranız <span style="color:var(--primary)">*</span></label><input type="tel" id="f-contact" class="form-input" placeholder="05XX XXX XX XX — size daha hızlı ulaşabilmemiz için" required></div>
+          <div class="form-group" style="margin-top:4px">
+            <label class="radio-option" style="align-items:flex-start;gap:10px;cursor:pointer">
+              <input type="checkbox" id="f-kvkk" style="margin-top:3px;width:16px;height:16px;flex-shrink:0">
+              <span style="font-size:13px;color:var(--text-muted);line-height:1.5">Kişisel verilerimin, talebimin değerlendirilmesi ve tarafımla iletişime geçilmesi amacıyla 6698 sayılı KVKK kapsamında işlenmesini kabul ediyorum. <span class="req">*</span></span>
+            </label>
+          </div>
           <button class="form-submit" onclick="analyzeAndRecommend()">Bana Uygun Paketi Göster →</button>
+          <p style="font-size:12px;color:var(--text-light);text-align:center;margin-top:10px">📱 Ekibimiz bu numaradan WhatsApp üzerinden kısa süre içinde sizinle iletişime geçecektir.</p>
         </div>
         <div class="recommendation" id="recommendation">
           <div class="rec-badge" id="rec-badge">Önerilen Paket</div>
@@ -411,8 +418,7 @@
           <div class="rec-note">Tek seferlik ödeme · Başarısız olursa %50 iade</div>
           <ul class="rec-features" id="rec-features"></ul>
           <div class="rec-actions">
-            <a href="#" id="rec-shopier" target="_blank" class="btn btn-primary">💳 Kartla Öde</a>
-            <span id="rec-crypto" class="btn btn-outline" style="opacity:0.5;cursor:not-allowed">₿ Kripto ile Öde — Yakında</span>
+            <a href="#" id="rec-shopier" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">💳 Kartla Öde</a>
           </div>
         </div>
       </div>
@@ -444,7 +450,6 @@
             <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
           <a href="https://www.shopier.com/ighesapkurtar/48444713" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
-          <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
           <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
         </div>
         <div class="price-card featured">
@@ -463,7 +468,6 @@
             <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
           <a href="https://www.shopier.com/ighesapkurtar/48444724" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
-          <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
           <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
         </div>
         <div class="price-card">
@@ -483,7 +487,6 @@
             <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
           <a href="https://www.shopier.com/ighesapkurtar/48444736" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
-          <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
           <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
         </div>
       </div>
@@ -551,7 +554,7 @@
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesabım kapatıldı nasıl geri alabilirim?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Hesabınız kapatıldığında profesyonel hesap kurtarma hizmetimizle iletişime geçin. Kapatılma sebebini analiz ediyoruz ve genellikle 3 gün - 1 hafta içinde hesabınızı geri almanız mümkündür.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesap kurtarma ne kadar sürer?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Süreç genellikle 3-7 gün içinde tamamlanır. Instagram destek hattının cevap hızına göre değişebilir. VIP paketimizde 24 saat içinde sürece başlanır.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Hesap kurtarma güvenli mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet. Hesap şifrenizi veya kişisel bilgilerinizi asla talep etmiyoruz. Instagram'ın resmi kanalları üzerinden yasal çerçevede çalışıyoruz.</div></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Ödeme yöntemleriniz nelerdir?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Kredi kartı ve banka kartı ile güvenli ödeme (Shopier altyapısı) ve kripto para ile ödeme (Bitcoin, Ethereum, USDT) seçenekleri sunuyoruz.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Ödeme yöntemleriniz nelerdir?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Kredi kartı ve banka kartı ile güvenli ödeme alıyoruz (Shopier altyapısı ile SSL korumalı). Kripto para ile ödeme seçeneği yakında eklenecek.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Başarısız olursa param iade edilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, %50 iade garantisi sunuyoruz. Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin %50'sini iade ediyoruz. Bu garanti tüm paketlerimiz için geçerlidir.</div></div></div>
       </div>
     </div>
@@ -562,12 +565,12 @@
     <div class="container">
       <div class="cta-box reveal">
         <h2>Hesabınızı Geri Almaya Hazır mısınız?</h2>
-        <p>Formu doldurun veya canlı destek ile 7/24 yardım alın.</p>
+        <p>Formu doldurun, ekibimiz WhatsApp üzerinden size ulaşsın.</p>
         <div class="hero-actions">
           <a href="#basvuru" class="btn btn-primary">📋 Formu Doldur</a>
-          <a href="https://wa.me/14155238886?text=join%20rocket-pilot" target="_blank" class="btn btn-outline" style="background:#25D366;color:#fff;border-color:#25D366">💬 Ekibimizle WhatsApp Üzerinden İletişime Geç</a>
           <a href="mailto:yardim@ighesapkurtar.com" class="btn btn-outline">✉️ E-posta Gönder</a>
         </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:18px">📱 Ekibimiz, formda belirttiğiniz WhatsApp numarasından kısa süre içinde sizinle iletişime geçecektir.</p>
       </div>
     </div>
   </section>
@@ -583,10 +586,10 @@
             <span class="footer-badge">⭐ 2.400+ Müşteri</span>
           </div>
         </div>
-        <div class="footer-col"><h4>Hizmetler</h4><ul><li><a href="#">Instagram Hesap Kurtarma</a></li><li><a href="#">Hacklenen Hesap Kurtarma</a></li><li><a href="#">İşletme Hesabı Kurtarma</a></li><li><a href="#">Instagram Ban Kaldırma</a></li></ul></div>
+        <div class="footer-col"><h4>Hizmetler</h4><ul><li><a href="/blog/instagram-hesap-kurtarma-2026.html">Instagram Hesap Kurtarma</a></li><li><a href="/blog/instagram-hesabim-hacklendi-ne-yapmaliyim.html">Hacklenen Hesap Kurtarma</a></li><li><a href="/blog/instagram-isletme-hesabi-kapatildi.html">İşletme Hesabı Kurtarma</a></li><li><a href="/blog/instagram-ban-kaldirma.html">Instagram Ban Kaldırma</a></li></ul></div>
         <div class="footer-col"><h4>Bilgi</h4><ul><li><a href="#nasil-calisir">Nasıl Çalışır</a></li><li><a href="#fiyatlar">Fiyatlar</a></li><li><a href="#sss">S.S.S</a></li><li><a href="#blog">Blog</a></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© 2025 IG Hesap Kurtar. Tüm hakları saklıdır.</span><span>yardim@ighesapkurtar.com</span></div>
+      <div class="footer-bottom"><span>© 2026 IG Hesap Kurtar. Tüm hakları saklıdır.</span><span>yardim@ighesapkurtar.com</span></div>
     </div>
   </footer>
 
@@ -634,8 +637,10 @@
       const type = document.querySelector('input[name="account-type"]:checked').value;
       const desc = document.getElementById('f-description').value.trim();
       const contact = document.getElementById('f-contact').value.trim();
+      const kvkkOnay = document.getElementById('f-kvkk').checked;
       if (!username || !followers || !desc) { alert('Lütfen tüm alanları doldurun.'); return; }
       if (!contact || contact.replace(/\D/g,'').length < 10) { alert('Lütfen geçerli bir WhatsApp numarası girin — size ulaşabilmemiz için gerekli.'); return; }
+      if (!kvkkOnay) { alert('Devam etmek için KVKK metnini onaylamanız gerekiyor.'); return; }
 
       let pkg, price, features, shopierLink, cryptoLink, pkgKey;
       const PL = {
@@ -658,7 +663,6 @@
       document.getElementById('rec-title').textContent=pkg;
       document.getElementById('rec-price').innerHTML=price;
       document.getElementById('rec-shopier').href=shopierLink;
-      document.getElementById('rec-crypto').href=cryptoLink;
       document.getElementById('rec-features').innerHTML=features.map(f=>`<li><span class="ck">✓</span> ${f}</li>`).join('');
       const rec=document.getElementById('recommendation');
       rec.classList.add('show');
@@ -668,7 +672,7 @@
       fetch('/api/form-submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, followers, type, description: desc, package: pkgKey, contact: contact || null })
+        body: JSON.stringify({ username, followers, type, description: desc, package: pkgKey, contact: contact || null, kvkkOnay: true })
       }).catch(() => {});
 
       // Google Ads dönüşüm takibi — Potansiyel müşteri formu gönderimi
@@ -697,7 +701,7 @@
 - Kapatılan, hacklenen, askıya alınan, ban yiyen Instagram hesaplarını kurtarıyoruz
 - 2.400+ başarılı kurtarma, %95+ başarı oranı, 3-7 gün sonuç
 - Fiyatlar: Başlangıç 2.999₺ (10K altı), Profesyonel 4.999₺ (10K-50K), VIP 7.999₺ (50K+/işletme)
-- Ödeme: Shopier (kredi kartı) + Kripto (BTC, ETH, USDT)
+- Ödeme: Shopier (kredi/banka kartı). Kripto ödeme yakında eklenecek.
 - Başarısız olursa %50 iade garantisi
 - Şifre talep etmiyoruz, Instagram resmi kanallarından çalışıyoruz
 - E-posta: yardim@ighesapkurtar.com`;
@@ -735,7 +739,7 @@
       if(/^(merhaba|selam|hey|naber)/.test(m))return'Merhaba! 😊 Instagram hesabınızla ilgili size nasıl yardımcı olabilirim?';
       if(/fiyat|ucret|kac|para|ne kadar/.test(m))return'Fiyatlarımız:\n\n📋 Başlangıç: 2.999₺ (10K altı)\n⭐ Profesyonel: 4.999₺ (10K-50K)\n🏆 VIP: 7.999₺ (50K+ / İşletme)\n\nBaşarısız olursa %50 iade garantisi var.';
       if(/sure|zaman|kac gun|kac saat/.test(m))return'Kurtarma süreci genellikle 3 gün - 1 hafta içinde tamamlanır. VIP paketimizde 24 saat içinde başlanır.';
-      if(/odeme|kart|kripto|bitcoin/.test(m))return'💳 Kredi/Banka Kartı (Shopier)\n₿ Kripto (BTC, ETH, USDT)\n\nÖdeme sonrası ekibimiz hemen başlar.';
+      if(/odeme|kart|kripto|bitcoin/.test(m))return'💳 Kredi/Banka Kartı (Shopier üzerinden, SSL korumalı)\n\nKripto ödeme seçeneği yakında eklenecek. Ödeme sonrası ekibimiz hemen başlar.';
       if(/iade|garanti|basarisiz/.test(m))return'Tüm paketlerde %50 iade garantisi var. Kurtaramazsak ödemenizin %50\'sini iade ediyoruz.';
       if(/guvenli|dolandir|sifre/.test(m))return'Şifrenizi asla istemiyoruz. Instagram resmi kanallarından yasal çerçevede çalışıyoruz. 2.400+ başarılı kurtarma geçmişimiz var. 🛡️';
       if(/hack|calın|ele gecir/.test(m))return'Hacklenen hesapları kurtarmada uzmanız. E-posta/şifre değişmiş olsa bile çözüm sunuyoruz. Formu doldurup durumunuzu anlatın! 👆';
