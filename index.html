@@ -156,6 +156,10 @@
     .price-card h3{font-size:20px;font-weight:800;margin-bottom:4px;color:var(--text)}
     .price-card .price-desc{font-size:14px;color:var(--text-muted);margin-bottom:20px}
     .price-amount{font-size:38px;font-weight:900;letter-spacing:-1.5px;margin-bottom:4px;color:var(--text)}
+    .price-old{font-size:16px;color:var(--text-light);text-decoration:line-through;margin-bottom:2px}
+    .discount-badge{position:absolute;top:16px;right:16px;background:#FEF3C7;color:#92400E;font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:0.3px}
+    .discount-banner{display:inline-block;margin-top:16px;padding:10px 20px;background:#FEF3C7;border:1px solid #FCD34D;border-radius:100px;font-size:14px;color:#92400E;font-weight:500}
+    .secure-note{text-align:center;font-size:11px;color:var(--text-light);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:4px}
     .price-amount .currency{font-size:18px;color:var(--text-muted)}
     .price-note{font-size:12px;color:var(--text-light);margin-bottom:24px}
     .price-features{list-style:none;margin-bottom:28px}
@@ -178,6 +182,7 @@
     .author-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--white)}
     .author-name{font-size:14px;font-weight:600;color:var(--text)}
     .author-detail{font-size:12px;color:var(--text-light)}
+    .verified-badge{display:inline-block;font-size:10px;color:var(--green);font-weight:600;margin-left:4px}
 
     /* BLOG */
     .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -210,6 +215,8 @@
     footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:48px 0 28px}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px}
     .footer-about p{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:10px}
+    .footer-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .footer-badge{font-size:12px;color:var(--text-muted);background:var(--bg-warm);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-weight:500}
     .footer-col h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
     .footer-col ul{list-style:none}
     .footer-col li{margin-bottom:8px}
@@ -221,6 +228,21 @@
     .chat-toggle{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--primary);color:var(--white);border:none;cursor:pointer;font-size:24px;box-shadow:0 4px 20px rgba(29,78,216,0.35);transition:transform .2s;display:flex;align-items:center;justify-content:center}
     .chat-toggle:hover{transform:scale(1.08)}
     .chat-toggle .badge{position:absolute;top:-1px;right:-1px;width:14px;height:14px;background:var(--green);border-radius:50%;border:2px solid var(--white)}
+
+    /* SOCIAL PROOF TOAST */
+    .social-toast{position:fixed;bottom:24px;left:24px;z-index:997;background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:14px 16px;display:none;align-items:center;gap:12px;max-width:300px;animation:toastSlideIn .4s ease}
+    .social-toast.show{display:flex}
+    .social-toast.hide{animation:toastSlideOut .3s ease forwards}
+    @keyframes toastSlideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes toastSlideOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-20px)}}
+    .toast-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+    .toast-text{flex:1;min-width:0}
+    .toast-name{font-size:13px;font-weight:700;color:var(--text)}
+    .toast-action{font-size:12px;color:var(--text-muted);line-height:1.4}
+    .toast-time{font-size:11px;color:var(--text-light);margin-top:2px;display:flex;align-items:center;gap:4px}
+    .toast-time::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block}
+    .toast-close{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:14px;padding:2px;flex-shrink:0;align-self:flex-start}
+    .toast-close:hover{color:var(--text)}
     .chat-window{position:fixed;bottom:96px;right:24px;z-index:998;width:380px;max-height:520px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);display:none;flex-direction:column;box-shadow:var(--shadow-lg);overflow:hidden}
     .chat-window.open{display:flex}
     .chat-header{padding:16px 20px;background:var(--primary);display:flex;align-items:center;gap:12px}
@@ -267,6 +289,7 @@
       .trust-bar{gap:20px}
       .chat-window{right:8px;left:8px;width:auto;bottom:88px}
       .cta-box{padding:40px 24px}
+      .social-toast{left:8px;right:8px;max-width:none;bottom:88px}
     }
   </style>
 </head>
@@ -316,8 +339,9 @@
   <div class="trust-bar reveal">
     <div class="trust-item"><span class="trust-icon">🛡️</span> Güvenli Süreç</div>
     <div class="trust-item"><span class="trust-icon">🔒</span> Şifre Talep Etmiyoruz</div>
-    <div class="trust-item"><span class="trust-icon">💳</span> Güvenli Ödeme</div>
+    <div class="trust-item"><span class="trust-icon">💳</span> SSL ile Güvenli Ödeme</div>
     <div class="trust-item"><span class="trust-icon">↩️</span> Başarısızlıkta %50 İade</div>
+    <div class="trust-item"><span class="trust-icon">⭐</span> 2.400+ Mutlu Müşteri</div>
   </div>
 
   <!-- PROBLEMS -->
@@ -400,12 +424,15 @@
         <div class="section-label">Fiyatlandırma</div>
         <h2 class="section-title">Şeffaf ve Adil Fiyatlar</h2>
         <p class="section-desc">Hesap türünüze göre net fiyatlar. Gizli ücret yok.</p>
+        <div class="discount-banner">🎉 Bu ay yeni başvurularda <strong>%20'ye kadar indirim</strong> uygulanıyor</div>
       </div>
       <div class="pricing-grid">
         <div class="price-card">
+          <div class="discount-badge">%20 İndirim</div>
           <div class="price-tier">Başlangıç</div>
           <h3>Kişisel Hesap</h3>
           <p class="price-desc">10K altı takipçili kişisel hesaplar</p>
+          <div class="price-old">4.999₺</div>
           <div class="price-amount">3.999<span class="currency">₺</span></div>
           <div class="price-note">Tek seferlik ödeme</div>
           <ul class="price-features">
@@ -416,11 +443,14 @@
           </ul>
           <a href="https://www.shopier.com/ighesapkurtar/48444713" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
           <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
+          <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
         </div>
         <div class="price-card featured">
+          <div class="discount-badge">%14 İndirim</div>
           <div class="price-tier">Profesyonel</div>
           <h3>Orta-Büyük Hesap</h3>
           <p class="price-desc">10K-50K takipçili hesaplar</p>
+          <div class="price-old">6.999₺</div>
           <div class="price-amount">5.999<span class="currency">₺</span></div>
           <div class="price-note">Tek seferlik ödeme</div>
           <ul class="price-features">
@@ -432,11 +462,14 @@
           </ul>
           <a href="https://www.shopier.com/ighesapkurtar/48444724" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
           <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
+          <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
         </div>
         <div class="price-card">
+          <div class="discount-badge">%10 İndirim</div>
           <div class="price-tier">VIP</div>
           <h3>İşletme & Büyük Hesap</h3>
           <p class="price-desc">50K+ takipçili ve işletme hesapları</p>
+          <div class="price-old">9.999₺</div>
           <div class="price-amount">8.999<span class="currency">₺</span></div>
           <div class="price-note">Tek seferlik ödeme</div>
           <ul class="price-features">
@@ -449,6 +482,7 @@
           </ul>
           <a href="https://www.shopier.com/ighesapkurtar/48444736" target="_blank" class="btn btn-primary price-btn">💳 Kartla Öde</a>
           <span class="btn btn-outline price-btn" style="opacity:0.5;cursor:not-allowed;pointer-events:none">₿ Kripto ile Öde — Yakında</span>
+          <div class="secure-note">🔒 SSL korumalı güvenli ödeme</div>
         </div>
       </div>
       <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:16px">*Süre, Instagram destek hattının cevap hızına göre değişiklik gösterebilir.</p>
@@ -467,9 +501,9 @@
         <h2 class="section-title">Hesabını Kurtaranlar Ne Diyor?</h2>
       </div>
       <div class="testimonials-grid">
-        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"5 yıllık işletme hesabım kapatıldı. 30K takipçi, yıllarca emek... Ekip 2 gün içinde hesabımı geri aldı. Muhteşem!"</blockquote><div class="testimonial-author"><div class="author-avatar">AY</div><div><div class="author-name">Ayşe Y.</div><div class="author-detail">E-ticaret İşletme Sahibi</div></div></div></div>
-        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"Hesabım hacklendi, e-postam ve şifrem değiştirilmişti. Bu ekip 2 gün içinde hesabımı geri verdi. Teşekkürler!"</blockquote><div class="testimonial-author"><div class="author-avatar">MK</div><div><div class="author-name">Mehmet K.</div><div class="author-detail">İçerik Üreticisi · 45K Takipçi</div></div></div></div>
-        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"Şeffaf süreç, net fiyat, sonuç garanti. Dolandırıcılarla karşılaştıktan sonra bu ekibe denk geldim. Tavsiye ederim."</blockquote><div class="testimonial-author"><div class="author-avatar">SÖ</div><div><div class="author-name">Selin Ö.</div><div class="author-detail">Moda Influencer · 80K Takipçi</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"5 yıllık işletme hesabım kapatıldı. 30K takipçi, yıllarca emek... Ekip 2 gün içinde hesabımı geri aldı. Muhteşem!"</blockquote><div class="testimonial-author"><div class="author-avatar">AY</div><div><div class="author-name">Ayşe Y. <span class="verified-badge">✓ Doğrulanmış</span></div><div class="author-detail">E-ticaret İşletme Sahibi</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"Hesabım hacklendi, e-postam ve şifrem değiştirilmişti. Bu ekip 2 gün içinde hesabımı geri verdi. Teşekkürler!"</blockquote><div class="testimonial-author"><div class="author-avatar">MK</div><div><div class="author-name">Mehmet K. <span class="verified-badge">✓ Doğrulanmış</span></div><div class="author-detail">İçerik Üreticisi · 45K Takipçi</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><blockquote>"Şeffaf süreç, net fiyat, sonuç garanti. Dolandırıcılarla karşılaştıktan sonra bu ekibe denk geldim. Tavsiye ederim."</blockquote><div class="testimonial-author"><div class="author-avatar">SÖ</div><div><div class="author-name">Selin Ö. <span class="verified-badge">✓ Doğrulanmış</span></div><div class="author-detail">Moda Influencer · 80K Takipçi</div></div></div></div>
       </div>
     </div>
   </section>
@@ -528,13 +562,30 @@
   <footer>
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-about"><a href="#" class="logo">ig<span>hesapkurtar</span></a><p>Türkiye'nin güvenilir Instagram hesap kurtarma hizmeti. Kapatılan, hacklenen veya askıya alınan hesaplarınızı profesyonel ekibimizle geri alın.</p></div>
+        <div class="footer-about"><a href="#" class="logo">ig<span>hesapkurtar</span></a><p>Türkiye'nin güvenilir Instagram hesap kurtarma hizmeti. Kapatılan, hacklenen veya askıya alınan hesaplarınızı profesyonel ekibimizle geri alın.</p>
+          <div class="footer-badges">
+            <span class="footer-badge">🔒 SSL Korumalı</span>
+            <span class="footer-badge">✓ %50 İade Garantisi</span>
+            <span class="footer-badge">⭐ 2.400+ Müşteri</span>
+          </div>
+        </div>
         <div class="footer-col"><h4>Hizmetler</h4><ul><li><a href="#">Instagram Hesap Kurtarma</a></li><li><a href="#">Hacklenen Hesap Kurtarma</a></li><li><a href="#">İşletme Hesabı Kurtarma</a></li><li><a href="#">Instagram Ban Kaldırma</a></li></ul></div>
         <div class="footer-col"><h4>Bilgi</h4><ul><li><a href="#nasil-calisir">Nasıl Çalışır</a></li><li><a href="#fiyatlar">Fiyatlar</a></li><li><a href="#sss">S.S.S</a></li><li><a href="#blog">Blog</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2025 IG Hesap Kurtar. Tüm hakları saklıdır.</span><span>yardim@ighesapkurtar.com</span></div>
     </div>
   </footer>
+
+  <!-- SOCIAL PROOF TOAST -->
+  <div class="social-toast" id="socialToast">
+    <div class="toast-avatar" id="toastAvatar">AY</div>
+    <div class="toast-text">
+      <div class="toast-name" id="toastName">Ahmet K.</div>
+      <div class="toast-action" id="toastAction">başvuru formunu doldurdu</div>
+      <div class="toast-time" id="toastTime">3 dakika önce</div>
+    </div>
+    <button class="toast-close" onclick="dismissToast()">✕</button>
+  </div>
 
   <!-- CHATBOT -->
   <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬<span class="badge"></span></button>
@@ -560,6 +611,56 @@
   </div>
 
   <script>
+    // ═══ SOCIAL PROOF TOAST ═══
+    const socialProofData = [
+      { initials: 'AY', name: 'Ahmet Y.', action: 'başvuru formunu doldurdu', time: '3 dakika önce' },
+      { initials: 'SK', name: 'Selin K.', action: 'profesyonel paketi seçti', time: '7 dakika önce' },
+      { initials: 'MÇ', name: 'Mert Ç.', action: 'hesabı için destek aldı', time: '12 dakika önce' },
+      { initials: 'ZA', name: 'Zeynep A.', action: 'başvuru formunu doldurdu', time: '18 dakika önce' },
+      { initials: 'BD', name: 'Burak D.', action: 'VIP paketi ile başvurdu', time: '24 dakika önce' },
+      { initials: 'EÖ', name: 'Elif Ö.', action: 'canlı destek ile görüştü', time: '31 dakika önce' },
+      { initials: 'CK', name: 'Cem K.', action: 'hesabını kurtarmaya başladı', time: '42 dakika önce' },
+      { initials: 'NT', name: 'Nazlı T.', action: 'başlangıç paketini seçti', time: '1 saat önce' }
+    ];
+
+    let toastIndex = 0;
+    let toastDismissedManually = false;
+    let toastInterval;
+
+    function showToast() {
+      if (toastDismissedManually) return;
+      const data = socialProofData[toastIndex % socialProofData.length];
+      toastIndex++;
+
+      const toast = document.getElementById('socialToast');
+      document.getElementById('toastAvatar').textContent = data.initials;
+      document.getElementById('toastName').textContent = data.name;
+      document.getElementById('toastAction').textContent = data.action;
+      document.getElementById('toastTime').textContent = data.time;
+
+      toast.classList.remove('hide');
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => toast.classList.remove('show', 'hide'), 300);
+      }, 5000);
+    }
+
+    function dismissToast() {
+      const toast = document.getElementById('socialToast');
+      toast.classList.add('hide');
+      setTimeout(() => toast.classList.remove('show', 'hide'), 300);
+      toastDismissedManually = true;
+      clearInterval(toastInterval);
+    }
+
+    // İlk bildirim 4 saniye sonra, sonra her 14 saniyede bir
+    setTimeout(() => {
+      showToast();
+      toastInterval = setInterval(showToast, 14000);
+    }, 4000);
+
     // ═══ SCROLL ANIMATIONS ═══
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
