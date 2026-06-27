@@ -405,7 +405,7 @@
           <div class="form-group" style="margin-top:4px">
             <label class="radio-option" style="align-items:flex-start;gap:10px;cursor:pointer">
               <input type="checkbox" id="f-kvkk" style="margin-top:3px;width:16px;height:16px;flex-shrink:0">
-              <span style="font-size:13px;color:var(--text-muted);line-height:1.5">Kişisel verilerimin, talebimin değerlendirilmesi ve tarafımla iletişime geçilmesi amacıyla 6698 sayılı KVKK kapsamında işlenmesini kabul ediyorum. <span class="req">*</span></span>
+              <span style="font-size:13px;color:var(--text-muted);line-height:1.5">Kişisel verilerimin, talebimin değerlendirilmesi ve tarafımla iletişime geçilmesi amacıyla 6698 sayılı KVKK kapsamında işlenmesini düzenleyen <a href="/kvkk.html" target="_blank" style="color:var(--primary)">Aydınlatma Metni</a>'ni okudum, kabul ediyorum. <span class="req">*</span></span>
             </label>
           </div>
           <button class="form-submit" onclick="analyzeAndRecommend()">Bana Uygun Paketi Göster →</button>
@@ -587,7 +587,7 @@
           </div>
         </div>
         <div class="footer-col"><h4>Hizmetler</h4><ul><li><a href="/blog/instagram-hesap-kurtarma-2026.html">Instagram Hesap Kurtarma</a></li><li><a href="/blog/instagram-hesabim-hacklendi-ne-yapmaliyim.html">Hacklenen Hesap Kurtarma</a></li><li><a href="/blog/instagram-isletme-hesabi-kapatildi.html">İşletme Hesabı Kurtarma</a></li><li><a href="/blog/instagram-ban-kaldirma.html">Instagram Ban Kaldırma</a></li></ul></div>
-        <div class="footer-col"><h4>Bilgi</h4><ul><li><a href="#nasil-calisir">Nasıl Çalışır</a></li><li><a href="#fiyatlar">Fiyatlar</a></li><li><a href="#sss">S.S.S</a></li><li><a href="#blog">Blog</a></li></ul></div>
+        <div class="footer-col"><h4>Bilgi</h4><ul><li><a href="#nasil-calisir">Nasıl Çalışır</a></li><li><a href="#fiyatlar">Fiyatlar</a></li><li><a href="#sss">S.S.S</a></li><li><a href="#blog">Blog</a></li><li><a href="/kvkk.html">KVKK Aydınlatma Metni</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2026 IG Hesap Kurtar. Tüm hakları saklıdır.</span><span>yardim@ighesapkurtar.com</span></div>
     </div>
@@ -716,7 +716,7 @@
       chatHistory.push({role:'user',content:msg});if(chatHistory.length>16)chatHistory=chatHistory.slice(-16);
       let reply='';
       try{
-        const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:400,system:SYS,messages:chatHistory})});
+        const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYS,messages:chatHistory})});
         if(!res.ok)throw new Error(res.status);const data=await res.json();reply=data.content?.map(b=>b.text||'').join('')||'';if(!reply)throw new Error('empty');
       }catch(e){reply=smartFallback(msg)}
       typingEl.remove();chatHistory.push({role:'assistant',content:reply});await typeMessage(reply);showContextualActions(msg);
