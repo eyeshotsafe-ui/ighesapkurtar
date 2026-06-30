@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instagram Hesap Kurtarma Hizmeti | Kapatılan Hesabınızı Geri Alın</title>
-  <meta name="description" content="Instagram hesabınız kapatıldı mı? Profesyonel Instagram hesap kurtarma hizmeti ile kapatılan, hacklenen veya askıya alınan Instagram hesabınızı 3-7 gün içinde geri alın. %95 başarı oranı.">
+  <meta name="description" content="Instagram hesabınız kapatıldı mı? Profesyonel Instagram hesap kurtarma hizmeti ile kapatılan, hacklenen veya askıya alınan Instagram hesabınızı 1-5 gün içinde geri alın. %95 başarı oranı.">
   <meta name="keywords" content="instagram hesap kurtarma, instagram hesabım kapatıldı, kapatılan instagram hesabı açma, instagram hesap kurtarma hizmeti, instagram hesabım nasıl geri alınır, instagram ban kaldırma">
   <meta name="robots" content="index, follow">
   <meta name="author" content="IG Hesap Kurtar">
@@ -27,7 +27,7 @@
   <meta property="og:url" content="https://ighesapkurtar.com">
   <meta property="og:locale" content="tr_TR">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"IG Hesap Kurtar","description":"Kapatılan, hacklenen veya askıya alınan Instagram hesaplarını kurtarma hizmeti.","url":"https://ighesapkurtar.com","areaServed":"TR","serviceType":"Instagram Hesap Kurtarma","availableLanguage":"Turkish","priceRange":"$$"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Instagram hesabım kapatıldı nasıl geri alabilirim?","acceptedAnswer":{"@type":"Answer","text":"Instagram hesabınız kapatıldıysa profesyonel hesap kurtarma hizmetimizle iletişime geçin. 3 gün - 1 hafta içinde hesabınızı geri almanız mümkündür."}},{"@type":"Question","name":"Instagram hesap kurtarma ne kadar sürer?","acceptedAnswer":{"@type":"Answer","text":"Hesap kurtarma süreci genellikle 3 gün - 1 hafta arasında tamamlanır. Süre Instagram destek hattının cevap hızına göre değişir."}},{"@type":"Question","name":"Kapatılan Instagram hesabı tekrar açılabilir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95 üzerindedir."}},{"@type":"Question","name":"Instagram hesap kurtarma ücreti ne kadar?","acceptedAnswer":{"@type":"Answer","text":"Kişisel hesaplar için 2.999₺, profesyonel hesaplar için 4.999₺, işletme/büyük hesaplar için 7.999₺."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Instagram hesabım kapatıldı nasıl geri alabilirim?","acceptedAnswer":{"@type":"Answer","text":"Instagram hesabınız kapatıldıysa profesyonel hesap kurtarma hizmetimizle iletişime geçin. 1-5 gün içinde hesabınızı geri almanız mümkündür."}},{"@type":"Question","name":"Instagram hesap kurtarma ne kadar sürer?","acceptedAnswer":{"@type":"Answer","text":"Hesap kurtarma süreci genellikle 1-5 gün arasında tamamlanır. Süre Instagram destek hattının cevap hızına göre değişir."}},{"@type":"Question","name":"Kapatılan Instagram hesabı tekrar açılabilir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet, kapatılan Instagram hesaplarının büyük çoğunluğu tekrar açılabilir. Başarı oranımız %95 üzerindedir."}},{"@type":"Question","name":"Instagram hesap kurtarma ücreti ne kadar?","acceptedAnswer":{"@type":"Answer","text":"Kişisel hesaplar için 2.999₺, profesyonel hesaplar için 4.999₺, işletme/büyük hesaplar için 7.999₺."}}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -302,6 +302,20 @@
       .chat-window{right:8px;left:8px;width:auto;bottom:88px}
       .cta-box{padding:40px 24px}
     }
+
+    /* STICKY MOBILE CTA BAR */
+    .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:12px 16px;box-shadow:0 -4px 20px rgba(0,0,0,0.08);transform:translateY(100%);transition:transform .3s ease}
+    .sticky-cta.show{transform:translateY(0)}
+    .sticky-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:600px;margin:0 auto}
+    .sticky-cta-text{font-size:13px;font-weight:600;color:var(--text)}
+    .sticky-cta-text span{display:block;font-size:11px;font-weight:400;color:var(--text-muted)}
+    .sticky-cta a{background:var(--gradient-ig);color:var(--white);padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(214,41,118,0.3)}
+    @media(max-width:768px){.sticky-cta{display:block}.chat-toggle{bottom:82px!important}}
+
+    /* KAPASITE BADGE */
+    .capacity-badge{display:inline-flex;align-items:center;gap:8px;background:#FEF3C7;border:1px solid #F59E0B;border-radius:100px;padding:8px 18px;font-size:13px;font-weight:600;color:#92400E;margin-bottom:16px}
+    .capacity-dot{width:8px;height:8px;border-radius:50%;background:#F59E0B;animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
   </style>
 </head>
 <body>
@@ -349,7 +363,7 @@
       <div class="hero-badge"><span class="dot"></span> 7/24 Destek · Türkiye Geneli Hizmet</div>
       <h1>Instagram Hesabınız mı<br><span class="highlight">Kapatıldı?</span></h1>
       <p style="font-style:italic;font-size:15px;color:var(--text-light);font-weight:600;margin-bottom:18px">Bu Son Günlerde Binlerce İnsanın Başına Geliyor.</p>
-      <p>Kapatılan, hacklenen veya askıya alınan Instagram hesabınızı profesyonel ekibimizle <strong>3 gün - 1 hafta</strong> içinde geri alın.</p>
+      <p>Kapatılan, hacklenen veya askıya alınan Instagram hesabınızı profesyonel ekibimizle <strong>1-5 gün</strong> içinde geri alın.</p>
       <div class="hero-actions">
         <a href="#basvuru" class="btn btn-primary">Ücretsiz Durum Analizi →</a>
         <a href="#nasil-calisir" class="btn btn-outline">Nasıl Çalışır?</a>
@@ -401,7 +415,7 @@
       <div class="process-grid">
         <div class="process-step"><div class="step-circle">1</div><h3>Formu Doldurun</h3><p>Hesap adınızı, takipçi sayınızı ve sorunu kısaca anlatın. Sistem size uygun paketi otomatik önerir.</p></div>
         <div class="process-step"><div class="step-circle">2</div><h3>Kurtarma Başlar</h3><p>Ödeme sonrası profesyonel ekibimiz Instagram ile iletişime geçerek kurtarma sürecini başlatır.</p></div>
-        <div class="process-step"><div class="step-circle">3</div><h3>Hesap Teslimi</h3><p>3 gün - 1 hafta içinde hesabınız kurtarılarak güvenli şekilde size teslim edilir.</p></div>
+        <div class="process-step"><div class="step-circle">3</div><h3>Hesap Teslimi</h3><p>1-5 gün içinde hesabınız kurtarılarak güvenli şekilde size teslim edilir.</p></div>
       </div>
     </div>
   </section>
@@ -413,6 +427,7 @@
         <div class="section-label">Başvuru</div>
         <h2 class="section-title">Hesabınızı Kurtaralım</h2>
         <p class="section-desc">Bilgilerinizi girin, size en uygun paketi otomatik olarak önerelim.</p>
+        <div class="capacity-badge"><span class="capacity-dot"></span>Bu hafta sınırlı sayıda başvuru kabul ediyoruz</div>
       </div>
       <div class="form-wrapper">
         <div class="form-card">
@@ -471,7 +486,7 @@
           <div class="price-note">Tek seferlik ödeme</div>
           <ul class="price-features">
             <li><span class="check">✓</span> Ücretsiz durum analizi</li>
-            <li><span class="check">✓</span> 3-7 gün içinde sonuç*</li>
+            <li><span class="check">✓</span> 1-5 gün içinde sonuç*</li>
             <li><span class="check">✓</span> Anlık bilgilendirme</li>
             <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
           </ul>
@@ -488,7 +503,7 @@
           <div class="price-note">Tek seferlik ödeme</div>
           <ul class="price-features">
             <li><span class="check">✓</span> Öncelikli işlem sırası</li>
-            <li><span class="check">✓</span> 3-7 gün içinde sonuç*</li>
+            <li><span class="check">✓</span> 1-5 gün içinde sonuç*</li>
             <li><span class="check">✓</span> Birebir canlı destek</li>
             <li><span class="check">✓</span> Hesap güvenlik danışmanlığı</li>
             <li><span class="check">✓</span> Başarısız olursa %50 iade</li>
@@ -577,8 +592,8 @@
         <h2 class="section-title">Sık Sorulan Sorular</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesabım kapatıldı nasıl geri alabilirim?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Hesabınız kapatıldığında profesyonel hesap kurtarma hizmetimizle iletişime geçin. Kapatılma sebebini analiz ediyoruz ve genellikle 3 gün - 1 hafta içinde hesabınızı geri almanız mümkündür.</div></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesap kurtarma ne kadar sürer?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Süreç genellikle 3-7 gün içinde tamamlanır. Instagram destek hattının cevap hızına göre değişebilir. VIP paketimizde 24 saat içinde sürece başlanır.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesabım kapatıldı nasıl geri alabilirim?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Hesabınız kapatıldığında profesyonel hesap kurtarma hizmetimizle iletişime geçin. Kapatılma sebebini analiz ediyoruz ve genellikle 1-5 gün içinde hesabınızı geri almanız mümkündür.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Instagram hesap kurtarma ne kadar sürer?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Süreç genellikle 1-5 gün içinde tamamlanır. Instagram destek hattının cevap hızına göre değişebilir. VIP paketimizde 24 saat içinde sürece başlanır.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Hesap kurtarma güvenli mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet. Hesap şifrenizi veya kişisel bilgilerinizi asla talep etmiyoruz. Instagram'ın resmi kanalları üzerinden yasal çerçevede çalışıyoruz.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Ödeme yöntemleriniz nelerdir?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Kredi kartı ve banka kartı ile güvenli ödeme alıyoruz (Shopier altyapısı ile SSL korumalı). Kripto para ile ödeme seçeneği yakında eklenecek.</div></div></div>
         <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Başarısız olursa param iade edilir mi?<span class="faq-arrow">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Evet, %50 iade garantisi sunuyoruz. Hesabınızı kurtaramadığımız takdirde ödediğiniz ücretin %50'sini iade ediyoruz. Bu garanti tüm paketlerimiz için geçerlidir.</div></div></div>
@@ -629,6 +644,14 @@
     </div>
   </footer>
 
+  <!-- STICKY MOBILE CTA BAR -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-text">Hesabını geri al<span>1-5 gün içinde sonuç</span></div>
+      <a href="#basvuru">Başvur →</a>
+    </div>
+  </div>
+
   <!-- CHATBOT -->
   <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬<span class="badge"></span></button>
   <div class="chat-window" id="chatWindow">
@@ -664,6 +687,18 @@
     // Nav shadow on scroll
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+      // Sticky CTA: hero'yu geçince göster, form bölümüne ulaşınca gizle
+      const bar = document.getElementById('stickyCta');
+      const form = document.getElementById('basvuru');
+      if (bar) {
+        const showAfter = 500;
+        const formTop = form ? form.getBoundingClientRect().top : 99999;
+        if (window.scrollY > showAfter && formTop > 200) {
+          bar.classList.add('show');
+        } else {
+          bar.classList.remove('show');
+        }
+      }
     });
 
     // ═══ HIZLI ARAMA TALEBİ (CTA bölümü) ═══
@@ -723,10 +758,10 @@
         features=['Acil müdahale ekibi','24 saat içinde sürece başlangıç','Kişisel hesap yöneticisi','Reklam hesabı koruması','30 gün sonrası destek','Başarısız olursa %50 iade'];
       } else if (followers >= 10000 || type === 'business') {
         pkg='⭐ Profesyonel — Orta-Büyük Hesap'; price='4.999<span class="curr">₺</span>'; shopierLink=PL.p.s; cryptoLink=PL.p.c; pkgKey='profesyonel';
-        features=['Öncelikli işlem sırası','3-7 gün içinde sonuç*','Birebir canlı destek','Hesap güvenlik danışmanlığı','Başarısız olursa %50 iade'];
+        features=['Öncelikli işlem sırası','1-5 gün içinde sonuç*','Birebir canlı destek','Hesap güvenlik danışmanlığı','Başarısız olursa %50 iade'];
       } else {
         pkg='📋 Başlangıç — Kişisel Hesap'; price='2.999<span class="curr">₺</span>'; shopierLink=PL.b.s; cryptoLink=PL.b.c; pkgKey='baslangic';
-        features=['Ücretsiz durum analizi','3-7 gün içinde sonuç*','Anlık bilgilendirme','Başarısız olursa %50 iade'];
+        features=['Ücretsiz durum analizi','1-5 gün içinde sonuç*','Anlık bilgilendirme','Başarısız olursa %50 iade'];
       }
 
       document.getElementById('rec-title').textContent=pkg;
@@ -768,7 +803,7 @@
 
 ## HİZMET BİLGİLERİ
 - Kapatılan, hacklenen, askıya alınan, ban yiyen Instagram hesaplarını kurtarıyoruz
-- 2.400+ başarılı kurtarma, %95+ başarı oranı, 3-7 gün sonuç
+- 2.400+ başarılı kurtarma, %95+ başarı oranı, 1-5 gün sonuç
 - Fiyatlar: Başlangıç 2.999₺ (10K altı), Profesyonel 4.999₺ (10K-50K), VIP 7.999₺ (50K+/işletme)
 - Ödeme: Shopier (kredi/banka kartı). Kripto ödeme yakında eklenecek.
 - Başarısız olursa %50 iade garantisi
@@ -807,13 +842,13 @@
       const m=msg.toLowerCase().replace(/[ıİ]/g,'i').replace(/[şŞ]/g,'s').replace(/[çÇ]/g,'c').replace(/[ğĞ]/g,'g').replace(/[üÜ]/g,'u').replace(/[öÖ]/g,'o');
       if(/^(merhaba|selam|hey|naber)/.test(m))return'Merhaba! 😊 Instagram hesabınızla ilgili size nasıl yardımcı olabilirim?';
       if(/fiyat|ucret|kac|para|ne kadar/.test(m))return'Fiyatlarımız:\n\n📋 Başlangıç: 2.999₺ (10K altı)\n⭐ Profesyonel: 4.999₺ (10K-50K)\n🏆 VIP: 7.999₺ (50K+ / İşletme)\n\nBaşarısız olursa %50 iade garantisi var.';
-      if(/sure|zaman|kac gun|kac saat/.test(m))return'Kurtarma süreci genellikle 3 gün - 1 hafta içinde tamamlanır. VIP paketimizde 24 saat içinde başlanır.';
+      if(/sure|zaman|kac gun|kac saat/.test(m))return'Kurtarma süreci genellikle 1-5 gün içinde tamamlanır. VIP paketimizde 24 saat içinde başlanır.';
       if(/odeme|kart|kripto|bitcoin/.test(m))return'💳 Kredi/Banka Kartı (Shopier üzerinden, SSL korumalı)\n\nKripto ödeme seçeneği yakında eklenecek. Ödeme sonrası ekibimiz hemen başlar.';
       if(/iade|garanti|basarisiz/.test(m))return'Tüm paketlerde %50 iade garantisi var. Kurtaramazsak ödemenizin %50\'sini iade ediyoruz.';
       if(/guvenli|dolandir|sifre/.test(m))return'Şifrenizi asla istemiyoruz. Instagram resmi kanallarından yasal çerçevede çalışıyoruz. 2.400+ başarılı kurtarma geçmişimiz var. 🛡️';
       if(/hack|calın|ele gecir/.test(m))return'Hacklenen hesapları kurtarmada uzmanız. E-posta/şifre değişmiş olsa bile çözüm sunuyoruz. Formu doldurup durumunuzu anlatın! 👆';
       if(/kapatil|kapandi|ban|askiya/.test(m))return'Kapatılan ve ban yiyen hesaplarda 2.400+ başarılı işlem. Formu doldurarak ücretsiz analiz alabilirsiniz! 👆';
-      if(/nasil|surec|adim/.test(m))return'1️⃣ Formu doldurun\n2️⃣ Sistem uygun paketi önerir\n3️⃣ Ödeme sonrası ekibimiz başlar\n4️⃣ 3 gün - 1 haftada hesap teslim\n\nHemen formu doldurun! ☝️';
+      if(/nasil|surec|adim/.test(m))return'1️⃣ Formu doldurun\n2️⃣ Sistem uygun paketi önerir\n3️⃣ Ödeme sonrası ekibimiz başlar\n4️⃣ 1-5 günde hesap teslim\n\nHemen formu doldurun! ☝️';
       if(/basvur|form|basla|istiyorum/.test(m))return'Harika! Sayfadaki Başvuru bölümüne gidip formu doldurun — sistem size otomatik paket önerecek. ☝️';
       if(/tesekkur|sagol|tamam/.test(m))return'Rica ederim! 😊 Başka sorunuz olursa yazın.';
       return'Instagram hesap kurtarma hakkında yardımcı olabilirim — fiyatlar, süreç veya başka bir konuda soru sorabilirsiniz. Ya da hemen formu doldurun! 😊';
